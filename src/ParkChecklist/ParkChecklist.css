@@ -1,0 +1,71 @@
+.checkbox-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .checkbox-list li {
+    background-color: white; /* Set background color for each checkbox item */
+    border-radius: 5px; /* Add border-radius for rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+    padding: 10px; /* Add padding for better spacing and readability */
+    margin: 5px;
+    margin-bottom: 10px;
+    width: calc(95% / 3); 
+    box-sizing: border-box;
+  }
+  
+  input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+  .welcome-message {
+    margin-top: 10px;
+    margin-right: 100px;
+  }
+
+  h1, h2 {
+    text-align: center;
+  }
+
+  .below-header-box{
+    display:flex;
+    justify-content: center;
+  }
+
+  .state-selector {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .state-selector select {
+    padding: 5px;
+    margin-right: 5px;
+  }
+  
+  .state-selector button {
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .pagination button:hover {
+    color: orange;
+  }
