@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./ParkChecklist.css"
 import page from "../resources/page.png";
+import SelectedStateParks from '../SelectedStateParks/SelectedStateParks';
 
 const ParkChecklist = ({ apiLink }) => {
     const [parks, setParks] = useState([]);
     const [checkedItems, setCheckedItems] = useState([]);
     const [selectedState, setSelectedState] = useState('');
-    const [showResults, setShowResults] = useState(false);
+    const [showResults, setShowResults] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const parksPerPage = 50;
 
@@ -87,6 +88,7 @@ const ParkChecklist = ({ apiLink }) => {
                 <button onClick={() => handlePageChange(currentPage + 1)}>{">"}</button>
                 <button onClick={() => handlePageChange(Math.ceil(parks.length / parksPerPage))}>{">>"}</button>
             </div>
+            <SelectedStateParks showResults={showResults} selectedState={selectedState}/>
         </div>
     );
 };
