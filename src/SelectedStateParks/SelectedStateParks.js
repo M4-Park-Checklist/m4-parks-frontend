@@ -24,7 +24,7 @@ function SelectedStateParks({ parks, selectedState }) {
           key={park.id}
           states={park.states}
           fullName={park.fullName}
-          images={park.images}
+          images={park.images[Math.floor(Math.random() * park.images.length)]}
           weatherInfo={park.weatherInfo}
         />
       ))}
