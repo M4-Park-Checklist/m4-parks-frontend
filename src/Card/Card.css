@@ -1,0 +1,21 @@
+.park-card {
+    border: 1px solid #090909;
+    background-color: antiquewhite;
+    width: 300px;
+    height: 600px; 
+    margin: 10px;
+    text-align: center;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+  }
+  
+  .image-container {
+    margin-top: 10px;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    max-height: 150px;
+    width: 100%; 
+  }
