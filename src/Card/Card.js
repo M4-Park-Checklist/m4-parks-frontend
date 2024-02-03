@@ -7,15 +7,10 @@ function Card({ id, states, fullName, weatherInfo, images }) {
       <h2>{fullName}</h2>
       <p>State: {states}</p>
       <div className="image-container">
-        {Array.isArray(images) ? (
-          images.map((image, index) => (
-            <img key={index} src={image.url} alt={image.altText} />
-          ))
-        ) : (
-          <img src={images.url} alt={images.altText} />
-        )}
+        <img key={images.id} src={images.url} alt={images.altText} />
       </div>
-      <p>Weather Info: {weatherInfo}</p>
+      <h3>Weather Info</h3>
+      <p>{weatherInfo}</p>
     </div>
   );
 }
