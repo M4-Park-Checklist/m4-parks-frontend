@@ -11,7 +11,7 @@ function Card({ id, states, fullName, weatherInfo, images }) {
         <img key={images.id} src={images.url} alt={images.altText} />
       </div>
       <h3>Weather Info</h3>
-      <p>{weatherInfo}</p>
+      {/* <p>{weatherInfo}</p> */}
       <button>See More!</button>
     </div>
   );
