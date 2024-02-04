@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useRoutes, useNavigate } from "react-router-dom";
 import axios from "axios";
+import PropTypes from 'prop-types';
 import "./ParkChecklist.css";
 import page from "../resources/page.png";
 import SelectedStateParks from "../SelectedStateParks/SelectedStateParks";
@@ -123,3 +124,8 @@ const ParkChecklist = ({ apiLink }) => {
 
 
 export default ParkChecklist;
+
+
+ParkChecklist.propTypes = {
+    apiLink: PropTypes.string.isRequired,
+  };
