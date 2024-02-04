@@ -11,6 +11,7 @@ function Card({ id, states, fullName, weatherInfo, images }) {
       </div>
       <h3>Weather Info</h3>
       <p>{weatherInfo}</p>
+      <button>See More!</button>
     </div>
   );
 }
