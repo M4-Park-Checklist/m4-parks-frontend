@@ -43,7 +43,7 @@ const ParkChecklist = ({ apiLink }) => {
 
   const handleGoClick = () => {
     setShowResults(true);
-    navigate('/selected-state');
+    navigate(`/selected-state/${selectedState}`)
   };
 
   const handlePageChange = (newPage) => {
@@ -108,7 +108,7 @@ const ParkChecklist = ({ apiLink }) => {
       ),
     },
     {
-      path: '/selected-state',
+      path: `/selected-state/${selectedState}`,
       element: <SelectedStateParks parks={parks} selectedState={selectedState} />,
     },
   ]);
