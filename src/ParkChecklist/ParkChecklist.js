@@ -13,7 +13,6 @@ const ParkChecklist = ({ apiLink, apiLinkSingle }) => {
   const [checkedItems, setCheckedItems] = useState([]);
   const [selectedState, setSelectedState] = useState("");
   const [showResults, setShowResults] = useState(false);
-  const [singlePark, setSinglePark] = useState(false);
   const [foundPark, setFoundPark] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
@@ -41,22 +40,16 @@ const ParkChecklist = ({ apiLink, apiLinkSingle }) => {
 
   const fetchParkDetails = (parkID) => {
     const selectedPark = parks.find((park) => park.id === parkID);
-  
+
     if (selectedPark) {
       setParkID(selectedPark.id);
-      setSinglePark(true);
-      setFoundPark(selectedPark)
+      setFoundPark(selectedPark);
       console.log(selectedPark);
     } else {
       console.error(`Park with id ${parkID} not found.`);
     }
+    navigate(`/Parks/${selectedState}/${parkID}`);
   };
-
-  useEffect(() => {
-    if (parkID) {
-      navigate(`/${selectedState}/${parkID}`);
-    }
-  }, [parkID, navigate]);
 
   const handleCheckboxChange = (parkId) => {
     setCheckedItems((prevCheckedItems) => {
@@ -74,7 +67,7 @@ const ParkChecklist = ({ apiLink, apiLinkSingle }) => {
 
   const handleGoClick = () => {
     setShowResults(true);
-    navigate(`/selected-state/${selectedState}`);
+    navigate(`/Parks/${selectedState}`);
   };
 
   const handlePageChange = (newPage) => {
@@ -142,21 +135,19 @@ const ParkChecklist = ({ apiLink, apiLinkSingle }) => {
         </>
       ),
     },
-    // !singlePark conditional will need rework. Can't search new state
     {
-      path: `/selected-state/${selectedState}`,
-      element:
-        showResults && !singlePark ? (
-          <SelectedStateParks
-            parks={parks}
-            selectedState={selectedState}
-            fetchParkDetails={fetchParkDetails}
-          />
-        ) : null,
+      path: `/Parks/${selectedState}`,
+      element: showResults ? (
+        <SelectedStateParks
+          parks={parks}
+          selectedState={selectedState}
+          fetchParkDetails={fetchParkDetails}
+        />
+      ) : null,
     },
     {
-      path: `/${selectedState}/${parkID}`,
-      element: parkID ? <ParkDetails foundPark={foundPark} /> : null,
+      path: `/Parks/${selectedState}/${parkID}`,
+      element: selectedState ? <ParkDetails foundPark={foundPark} /> : null,
     },
   ]);
 
