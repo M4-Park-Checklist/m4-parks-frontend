@@ -1,19 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './ParkDetails.css'
+import React from "react";
+import PropTypes from "prop-types";
+import "./ParkDetails.css";
 
-function ParkDetails({ parkID }) {
-  if (!parkID) {
+function ParkDetails({ foundPark }) {
+  if (!foundPark) {
     return null;
   }
 
-
+  console.log(foundPark);
   return (
     <div className="park-details-container">
       <div className="park-details-title">
-        <h1 className="single-title">{parkID.title}</h1>
-        {parkID.urlToImage && <img className='image' src={parkID.urlToImage} alt={parkID.title} />}
-        </div>
+        <h1 className="single-title">{foundPark.fullName}</h1>
+      </div>
       <div className="park-details-activities">
         <h2 className="single-activities">Activities</h2>
       </div>
@@ -24,4 +23,4 @@ function ParkDetails({ parkID }) {
   );
 }
 
-export default ParkDetails
+export default ParkDetails;
