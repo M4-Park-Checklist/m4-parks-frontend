@@ -12,6 +12,13 @@ function ParkDetails({ foundPark }) {
       <div className="park-details-title">
         <h2 className="single-title">{foundPark.fullName}</h2>
       </div>
+      <section className="image-container">
+        <img
+         className="single-image"
+         src={foundPark.images[1].url}
+         alt={foundPark.images[0].altText}
+        />
+      </section>
       <section className="park-info">
         <div className="park-details-activities">
           <h3 className="single-activities">Activities</h3>

@@ -7,6 +7,13 @@
   
 .park-details-title {
     margin-bottom: 20px;
+    flex: 1;
+    border: 1px solid #090909;
+    background-color: antiquewhite;
+    margin: 10px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
 }
   
 .single-title {
@@ -40,5 +47,17 @@
   
 .park-details-weather {
     order: 1;
+}
+
+.image-container {
+    margin-top: 20px;
+    text-align: center;
+}
+  
+.single-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
 }
   
