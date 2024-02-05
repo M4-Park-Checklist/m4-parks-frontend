@@ -204,7 +204,7 @@ const ParkChecklist = ({ apiLink }) => {
       className="park-checklist-container"
       style={{ backgroundImage: `url(${page})` }}
     >
-      <h1>National Park Service Service</h1>
+      <h1 className="page-title">National Park Service Service</h1>
       {loading ? (
         <p className="loading-message">Loading Parks...</p>
       ) : (

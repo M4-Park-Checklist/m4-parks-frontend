@@ -70,10 +70,16 @@
     color: orange;
   }
 
+  .page-title{
+    position: relative;
+    margin-top: 0; 
+  }
+
   .park-checklist-container {
     position: relative;
     min-height: 100vh; 
-    background-size: cover; 
+    background-size: cover;
+    padding-top: 50px; 
   }
   
   .loading-message {
