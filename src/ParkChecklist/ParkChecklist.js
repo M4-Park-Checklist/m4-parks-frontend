@@ -7,7 +7,8 @@ import page from "../resources/page.png";
 import SelectedStateParks from "../SelectedStateParks/SelectedStateParks";
 import ParkDetails from "../ParkDetails/ParkDetails";
 
-const ParkChecklist = ({ apiLink, apiLinkSingle }) => {
+const ParkChecklist = ({ apiLink }) => {
+  const [loading, setLoading] = useState(true);
   const [parks, setParks] = useState([]);
   const [parkID, setParkID] = useState(null);
   const [checkedItems, setCheckedItems] = useState([]);
@@ -18,20 +19,67 @@ const ParkChecklist = ({ apiLink, apiLinkSingle }) => {
   const navigate = useNavigate();
   const parksPerPage = 50;
   const states = [
-    "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
-    "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD",
-    "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
-    "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC",
-    "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"
-];
+    "AL",
+    "AK",
+    "AZ",
+    "AR",
+    "CA",
+    "CO",
+    "CT",
+    "DE",
+    "FL",
+    "GA",
+    "HI",
+    "ID",
+    "IL",
+    "IN",
+    "IA",
+    "KS",
+    "KY",
+    "LA",
+    "ME",
+    "MD",
+    "MA",
+    "MI",
+    "MN",
+    "MS",
+    "MO",
+    "MT",
+    "NE",
+    "NV",
+    "NH",
+    "NJ",
+    "NM",
+    "NY",
+    "NC",
+    "ND",
+    "OH",
+    "OK",
+    "OR",
+    "PA",
+    "RI",
+    "SC",
+    "SD",
+    "TN",
+    "TX",
+    "UT",
+    "VT",
+    "VA",
+    "WA",
+    "WV",
+    "WI",
+    "WY",
+  ];
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${apiLink}&limit=500`);
         setParks(response.data.data);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
+        setLoading(true);
       }
     };
 
@@ -157,7 +205,11 @@ const ParkChecklist = ({ apiLink, apiLinkSingle }) => {
       style={{ backgroundImage: `url(${page})` }}
     >
       <h1>National Park Service Service</h1>
-      {routes}
+      {loading ? (
+        <p className="loading-message">Loading Parks...</p>
+      ) : (
+        routes
+      )}
     </div>
   );
 };
