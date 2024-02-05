@@ -31,7 +31,7 @@ function SelectedStateParks({ parks, selectedState }) {
             states={park.states}
             fullName={park.fullName}
             images={randomImage}
-            weatherInfo={park.weatherInfo}
+            active_alerts={park.active_alerts}
           />
         );
       })}
