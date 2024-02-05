@@ -2,15 +2,18 @@ import React, { useState, useEffect } from "react";
 import { useRoutes, useNavigate } from "react-router-dom";
 import axios from "axios";
 import PropTypes from 'prop-types';
-import "./ParkChecklist.css";
+import './ParkChecklist.css';
 import page from "../resources/page.png";
-import SelectedStateParks from "../SelectedStateParks/SelectedStateParks";
+import SelectedStateParks from '../SelectedStateParks/SelectedStateParks';
+import ParkDetails from '../ParkDetails/ParkDetails';
 
 const ParkChecklist = ({ apiLink }) => {
     const [parks, setParks] = useState([]);
+    const [parkID, setParkID] = useState(null)
     const [checkedItems, setCheckedItems] = useState([]);
     const [selectedState, setSelectedState] = useState("");
     const [showResults, setShowResults] = useState(false);
+    const [singlePark, setSinglePark] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const navigate = useNavigate();
     const parksPerPage = 50;
@@ -27,6 +30,7 @@ const ParkChecklist = ({ apiLink }) => {
             try {
                 const response = await axios.get(`${apiLink}&limit=500`);
                 setParks(response.data.data);
+                setParkID(response.data.id)
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
@@ -34,6 +38,17 @@ const ParkChecklist = ({ apiLink }) => {
 
         fetchData();
     }, [apiLink, selectedState, showResults, currentPage]);
+
+    const fetchParkDetails = async (parkID) => {
+        try {
+            const response = await axios.get(`${apiLink}/${parkID}`);
+            setParkID(response.data);
+            setSinglePark(true);
+            navigate(`/details/${parkID}`)
+        } catch (error) {
+            console.error("Error fetching single park data:", error);
+        }
+    };
 
     const handleCheckboxChange = (parkId) => {
         setCheckedItems((prevCheckedItems) => {
@@ -121,7 +136,13 @@ const ParkChecklist = ({ apiLink }) => {
         },
         {
             path: `/selected-state/${selectedState}`,
-            element: <SelectedStateParks parks={parks} selectedState={selectedState} />,
+            element: showResults && !singlePark ? (
+                <SelectedStateParks parks={parks} selectedState={selectedState} fetchParkDetails={fetchParkDetails} />
+            ) : null,
+        },
+        {
+            path: `/details/${parkID}`,
+            element: singlePark ? <ParkDetails parkID={parkID} /> : null,
         },
     ]);
 
