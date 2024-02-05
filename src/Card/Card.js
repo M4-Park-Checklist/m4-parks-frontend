@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import "./Card.css";
 
 function Card({ id, states, fullName, weatherInfo, images, fetchParkDetails }) {
+    console.log(id)
   return (
     <div className="park-card">
       <h2>{fullName}</h2>
@@ -16,7 +17,6 @@ function Card({ id, states, fullName, weatherInfo, images, fetchParkDetails }) {
     </div>
   );
 }
-
 export default Card;
 
 
