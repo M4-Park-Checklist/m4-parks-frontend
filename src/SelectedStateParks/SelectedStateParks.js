@@ -23,10 +23,10 @@ function SelectedStateParks({ parks, selectedState, fetchParkDetails }) {
       {filteredState.map((park) => {
         const randomImage =
           park.images[Math.floor(Math.random())];
-
         return (
           <Card
             className="card"
+            id={park.id}
             key={park.id}
             states={park.states}
             fullName={park.fullName}
