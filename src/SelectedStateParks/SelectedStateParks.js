@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Card from "../Card/Card";
 import "./SelectedStateParks.css";
 
-function SelectedStateParks({ parks, selectedState }) {
+function SelectedStateParks({ parks, selectedState, fetchParkDetails }) {
   if (!parks || parks.length === 0) {
     return <div>No parks available.</div>;
   }
@@ -32,6 +32,7 @@ function SelectedStateParks({ parks, selectedState }) {
             fullName={park.fullName}
             images={randomImage}
             weatherInfo={park.weatherInfo}
+            fetchParkDetails={() => fetchParkDetails(park.id)}
           />
         );
       })}
