@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from 'prop-types';
 import "./Card.css";
 
-function Card({ id, states, fullName, weatherInfo, images }) {
+function Card({ id, states, fullName, weatherInfo, images, fetchParkDetails }) {
+
   return (
     <div className="park-card">
       <h2>{fullName}</h2>
@@ -11,12 +12,11 @@ function Card({ id, states, fullName, weatherInfo, images }) {
         <img key={images.id} src={images.url} alt={images.altText} />
       </div>
       <h3>Weather Info</h3>
-      {/* <p>{weatherInfo}</p> */}
-      <button>See More!</button>
+      <p>{weatherInfo}</p>
+      <button onClick={() => fetchParkDetails(id)}>See More!</button>
     </div>
   );
 }
-
 export default Card;
 
 

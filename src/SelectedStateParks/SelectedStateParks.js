@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Card from "../Card/Card";
 import "./SelectedStateParks.css";
 
-function SelectedStateParks({ parks, selectedState }) {
+function SelectedStateParks({ parks, selectedState, fetchParkDetails }) {
   if (!parks || parks.length === 0) {
     return <div>No parks available.</div>;
   }
@@ -23,15 +23,16 @@ function SelectedStateParks({ parks, selectedState }) {
       {filteredState.map((park) => {
         const randomImage =
           park.images[Math.floor(Math.random())];
-
         return (
           <Card
             className="card"
+            id={park.id}
             key={park.id}
             states={park.states}
             fullName={park.fullName}
             images={randomImage}
             weatherInfo={park.weatherInfo}
+            fetchParkDetails={() => fetchParkDetails(park.id)}
           />
         );
       })}
