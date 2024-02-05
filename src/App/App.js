@@ -8,7 +8,7 @@ const App = () => {
 
   return (
     <Router>
-      <ParkChecklist apiLink={apiLink} />
+      <ParkChecklist apiLink={apiLink}/>
     </Router>
   );
 };
