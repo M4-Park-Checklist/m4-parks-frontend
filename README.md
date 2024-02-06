@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+## 💭 Abstract
+NPS Service is an app designed to let you view all of the national parks in the country at a glance, as well as check off the ones you have visted. You can filter the parks down by state and doing so lets you see more park info! we have a lot of room to grow and implement more on this app, so this is just the first stage of development.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 💻 Installation instructions
+1. Open project on Github
+2. Clone down the repo
+3. cd into the repo and run npm install
+4. Run npm start
+5. When the window opens, you should have access to a checklist of parks 
+6. You should be able to check off parks and see your `parks visited` increase
+7. Narrow the view by state.
+8. Click the see more button on the park card to see more information about the park. 
 
-## Available Scripts
 
-In the project directory, you can run:
+## 🕹️ Deploy Link
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 📷 Preview of App
+![sample video of the project](https://github.com/Jesuitman/m3-rancid-tomatillos/blob/main/ezgif-1-a2537a03b6.gif?raw=true)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🍎 Context
+This app was the first time we worked with a Backend Team to cultivate a server of our own requests. We had a goal in mind to make a travel journal for anyone to use conviniently and are in the first stage of development. We started to use Axios for our fetches and plan to use Tailwind for styling. As time goes on we will be adding more to this project so that we can publish the app for use by anyone who wants to use it.
 
-### `npm test`
+## 🧠 Contributors
+Lex - https://github.com/Jesuitman
+Joey - https://github.com/JoeyStewart
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🖇️ Learning Goals
+### Backend Integration: 
 
-### `npm run build`
+### Sprint Based development:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### New Team Dyanmics with Backend Team:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Error Handling: 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Axios: 
 
-### `npm run eject`
+### Unstructured project expectations: 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🎆 Wins && 🔥 Challenges#
+### Wins:
+Lex - This is a celebration of everything I have learned so far! I got to work with a backend team and learn more about what it takes to be a full stack dev.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Joey - The project has been going extremely smooth so far. It's very rewarding to see the progress that I have made. We have been able to tackle this project through collaboration and great time management. No issue has been a major headache thus far. Our progress has been so steady that there has been no crunch and we are now able to re-evaluate what we wish to implement either before the deadline or during part two.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Challenges: 
+Lex - Learning new stretch techs is always a challenge, helpfully allieviated by the documentation and easy implmentation. The other main challenge I experienced for the project was adapting my fetch requests to the backend server we had set up. Another challenge was working around the request limit because if we coded irresponsibly, the fetch limit would be quick to eat up.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Joey - Getting the single park view was a bit of a challenge at first. I intended to use another api call to pull a single park with the use of its ID and then display it on the screen. I could find no way to actually pull a single park with this method. I then realized that we already have the entire array already stored in a useState. So I was able to use the park.id that was chosen from a ‘click’ on the park’s card to filter the single park with the same id, and then place that in its own useState so it could be used as a prop in the details component. Saving us from our limited amount of api calls per hour in the process.
 
-## Learn More
+## 📝 Observations  
+Lex - I got to really learn what backend does and is all about! I really enjoyed the opportunity to work with them in this low stress environment. They taught me a lot too which will be helpful for the future. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Joey -  It was our first time working with a backend team, we needed to discuss what they’re part of the project actually entails. Getting a better understanding of the BE allowed us to manipulate our presented data so that the FE and the BE could finally connect and work in unison.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📊 Future Plans:
+- Tailwind implementation for all of our styling
+- More information available for the parks
+- Sorting options for all the parks
+- A "visited parks" page
+- Checking a park removes it from your checklist of parks you can see at a glance
+- A cover page to welcome the user
+- A login for storing information
+- A favorited parks page
+- Bug Fixes as the need arises
 
-### Code Splitting
+## ✋ User Test Instructions 
+1. Refresh the page on load, see the loading screen
+2. Click some of the checkboxes on the parks, notice that your `parks visited` number increases
+3. Scroll to the bottom of the page and click the right arrows to see more parks
+4. Check off some more parks, notice your counter stays consistent
+5. Filter your view by state
+6. Notice that you have a significantly limited amount of parks now, but far more information available
+7. Click a see more button on any of the cards
+8. Notice more information is now displayed
+9. Click the back browser button
+10. View another park
+11. Tell me your thoughts?
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 👩‍💻 User Test Results/Observations
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
