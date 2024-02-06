@@ -96,3 +96,28 @@
     z-index: 999;
   }
   
+  @media screen and (max-width: 1100px) and (min-width: 601px){
+    .checkbox-list li {
+        background-color: white; /* Set background color for each checkbox item */
+        border-radius: 5px; /* Add border-radius for rounded corners */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+        padding: 10px; /* Add padding for better spacing and readability */
+        margin: 5px;
+        margin-bottom: 10px;
+        width: calc(95% / 2); 
+        box-sizing: border-box;
+      }
+  }
+
+  @media screen and (max-width: 600px) {
+    .checkbox-list li {
+        background-color: white; /* Set background color for each checkbox item */
+        border-radius: 5px; /* Add border-radius for rounded corners */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+        padding: 10px; /* Add padding for better spacing and readability */
+        margin: 5px;
+        margin-bottom: 10px;
+        width: calc(95% / 1); 
+        box-sizing: border-box;
+      }
+  }

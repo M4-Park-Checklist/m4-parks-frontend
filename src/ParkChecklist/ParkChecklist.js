@@ -17,7 +17,7 @@ const ParkChecklist = ({ apiLink }) => {
   const [foundPark, setFoundPark] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
-  const parksPerPage = 50;
+  const parksPerPage = 48;
   const states = [
     "AL",
     "AK",
