@@ -11,13 +11,13 @@ describe('PokéLex App', () => {
       cy.visit('http://localhost:3000/');
       cy.wait("@getParks")
 
-      cy.title().should('eq', 'Nation Park Service Service');
-      cy.get('.gen-button').should('have.length', 12);
+      cy.title().should('eq', 'NPS Service');
+      cy.get('.checkbox').should('have.length', 2);
 
-      cy.get('a').contains('Teams').click();
-      cy.url().should('eq', 'http://localhost:3000/teams');
-      cy.contains('Pick a generation and add some pokemon to your team!').should('exist');
-      cy.contains('Your team so far...').should('exist');
+      // cy.get('a').contains('Teams').click();
+      // cy.url().should('eq', 'http://localhost:3000/teams');
+      // cy.contains('Pick a generation and add some pokemon to your team!').should('exist');
+      // cy.contains('Your team so far...').should('exist');
     });
   });
 })
