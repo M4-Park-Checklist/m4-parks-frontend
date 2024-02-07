@@ -34,3 +34,17 @@ function ParkDetails({ foundPark }) {
 }
 
 export default ParkDetails;
+
+
+ParkDetails.propTypes = {
+  foundPark: PropTypes.shape({
+    fullName: PropTypes.string.isRequired,
+    images: PropTypes.arrayOf(
+      PropTypes.shape({
+        url: PropTypes.string.isRequired,
+        altText: PropTypes.string.isRequired
+      })
+    ).isRequired,
+    weatherInfo: PropTypes.string.isRequired
+  }).isRequired
+};
