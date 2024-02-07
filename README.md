@@ -22,8 +22,10 @@ NPS Service is an app designed to let you view all of the national parks in the 
 This app was the first time we worked with a Backend Team to cultivate a server of our own requests. We had a goal in mind to make a travel journal for anyone to use conviniently and are in the first stage of development. We started to use Axios for our fetches and plan to use Tailwind for styling. As time goes on we will be adding more to this project so that we can publish the app for use by anyone who wants to use it.
 
 ## 🧠 Contributors
-Lex - https://github.com/Jesuitman
-Joey - https://github.com/JoeyStewart
+- Lex - https://www.linkedin.com/in/lex-hastings-88798a1b5/, https://github.com/Jesuitman
+- Joey - https://www.linkedin.com/in/joe-stewart-1b1a97114/, https://github.com/JoeyStewart
+- Kam - https://www.linkedin.com/in/kameron-kennedy-pe/, https://github.com/kameronk92
+- Paul - https://www.linkedin.com/in/paul-bennett-dev, https://github.com/pcbennett108
 
 ## 🖇️ Learning Goals
 ### Backend Integration: 

@@ -31,7 +31,7 @@ function SelectedStateParks({ parks, selectedState, fetchParkDetails }) {
             states={park.states}
             fullName={park.fullName}
             images={randomImage}
-            weatherInfo={park.weatherInfo}
+            description={park.description}
             fetchParkDetails={() => fetchParkDetails(park.id)}
           />
         );
