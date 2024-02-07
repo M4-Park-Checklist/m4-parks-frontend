@@ -87,6 +87,10 @@ const ParkChecklist = ({ apiLink }) => {
   }, [apiLink, selectedState, showResults, currentPage]);
 
   const fetchParkDetails = (parkID) => {
+    // try{
+    //     const response = await axios.get( const indivParkLink = `https://m4-parks-backend.onrender.com/api/v0/parks/${parkID}`)
+    //     const selectedPark = (response.data.data)        
+    // }
     const selectedPark = parks.find((park) => park.id === parkID);
 
     if (selectedPark) {
