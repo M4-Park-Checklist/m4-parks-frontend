@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useRoutes, useNavigate, Link } from "react-router-dom";
+import { useRoutes, useNavigate, Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import PropTypes from "prop-types";
 import "./ParkChecklist.css";
@@ -156,6 +156,10 @@ const ParkChecklist = ({ apiLink }) => {
         {
             path: `/Parks/${selectedState}/${parkID}`,
             element: selectedState ? <ParkDetails foundPark={foundPark} /> : null,
+        },
+        {
+            path: "/*",
+            element: <Navigate to="/" />,
         },
     ]);
 
