@@ -16,8 +16,6 @@ function SelectedStateParks({ parks, selectedState, fetchParkDetails }) {
     return <div>No parks match the selected state.</div>;
   }
 
-// This variable used for random index of park.images
-// const randomIndex = Math.floor(Math.random() * 2); 
   return (
     <div className="card-grid">
       {filteredState.map((park) => {
