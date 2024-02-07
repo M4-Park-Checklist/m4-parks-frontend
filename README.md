@@ -81,4 +81,11 @@ Joey -  It was our first time working with a backend team, we needed to discuss 
 11. Tell me your thoughts?
 
 ## 👩‍💻 User Test Results/Observations
+- user noticed that the card styling doesnt contain all of the infor, some runs off page *in progress*
+- user saw that the activities part of the park detail is currently empty *in progress*
+- User wants the ability to right click a park and see a menu of possible actions she can take for the park (could this be done with a hamburger insteado f a right click?)
+- user wants to be able to search for parks on checklist view
+- user wants the ability to filter parks by activity she wants to do
+- user wants to be able to get to the details of a park page by clicking on it somewhere on the checklist view (not being forced to go through state view)
+- user wants a wishlist or a planning to visit type of page
 
