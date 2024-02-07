@@ -1,6 +1,7 @@
 import React from 'react';
 import ParkChecklist from '../ParkChecklist/ParkChecklist';
 import { BrowserRouter as Router } from 'react-router-dom';
+import "../styles.css"
 import "./App.css"
 
 const App = () => {
