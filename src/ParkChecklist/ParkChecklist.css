@@ -96,6 +96,12 @@
     z-index: 999;
   }
   
+  .header-link {
+    text-decoration: none; 
+    color: inherit; 
+    cursor: pointer; 
+  }
+  
   @media screen and (max-width: 1100px) and (min-width: 601px){
     .checkbox-list li {
         background-color: white; /* Set background color for each checkbox item */

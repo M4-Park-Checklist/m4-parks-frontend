@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'WrittenFont';
+    src: url("./fonts/DSMarkerFelt.ttf") format('truetype');
+  }
+  
+  body,button {
+    font-family: 'WrittenFont', sans-serif; 
+  }
