@@ -228,5 +228,6 @@ const ParkChecklist = ({ apiLink, indivParkLink }) => {
 export default ParkChecklist;
 
 ParkChecklist.propTypes = {
-    apiLink: PropTypes.string.isRequired,
+  apiLink: PropTypes.string.isRequired,
+  indivParkLink: PropTypes.string,
 };
