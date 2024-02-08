@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import Card from "../Card/Card";
 import "./SelectedStateParks.css";
 
@@ -9,7 +9,7 @@ function SelectedStateParks({ parks, selectedState, fetchParkDetails }) {
   }
 
   const filteredState = parks.filter(
-    (results) => results.states === selectedState
+    (results) => results.attributes.states === selectedState
   );
 
   if (!filteredState || filteredState.length === 0) {
@@ -19,18 +19,17 @@ function SelectedStateParks({ parks, selectedState, fetchParkDetails }) {
   return (
     <div className="card-grid">
       {filteredState.map((park) => {
-        const randomImage =
-          park.images[Math.floor(Math.random())];
+        const randomImage = park.attributes.media[Math.floor(Math.random())];
         return (
           <Card
             className="card"
-            id={park.id}
-            key={park.id}
-            states={park.states}
-            fullName={park.fullName}
+            id={park.attributes.park_code}
+            key={park.attributes.park_code}
+            states={park.attributes.states}
+            fullName={park.attributes.name}
             images={randomImage}
-            description={park.description}
-            fetchParkDetails={() => fetchParkDetails(park.id)}
+            description={park.attributes.description}
+            fetchParkDetails={() => fetchParkDetails(park.attributes.park_code)}
           />
         );
       })}
@@ -40,21 +39,19 @@ function SelectedStateParks({ parks, selectedState, fetchParkDetails }) {
 
 export default SelectedStateParks;
 
-
 SelectedStateParks.propTypes = {
-    parks: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        fullName: PropTypes.string.isRequired,
-        states: PropTypes.string.isRequired,
-        images: PropTypes.arrayOf(
-          PropTypes.shape({
-            url: PropTypes.string.isRequired,
-          })
-        ).isRequired,
-        weatherInfo: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-    selectedState: PropTypes.string.isRequired,
-  };
-  
+  parks: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      fullName: PropTypes.string.isRequired,
+      states: PropTypes.string.isRequired,
+      images: PropTypes.arrayOf(
+        PropTypes.shape({
+          url: PropTypes.string.isRequired,
+        })
+      ).isRequired,
+      weatherInfo: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  selectedState: PropTypes.string.isRequired,
+};
