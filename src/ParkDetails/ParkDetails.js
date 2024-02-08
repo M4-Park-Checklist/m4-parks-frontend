@@ -50,13 +50,21 @@ export default ParkDetails;
 
 ParkDetails.propTypes = {
   foundPark: PropTypes.shape({
-    fullName: PropTypes.string.isRequired,
-    images: PropTypes.arrayOf(
-      PropTypes.shape({
-        url: PropTypes.string.isRequired,
-        altText: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-    weatherInfo: PropTypes.string.isRequired,
-  }).isRequired,
+    attributes: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      media: PropTypes.arrayOf(
+        PropTypes.shape({
+          url: PropTypes.string.isRequired,
+          altText: PropTypes.string.isRequired,
+        })
+      ).isRequired,
+      things_to_do: PropTypes.arrayOf(PropTypes.string).isRequired,
+      current_weather: PropTypes.shape({
+        condition: PropTypes.string.isRequired,
+        temperature: PropTypes.number.isRequired,
+        feels_like: PropTypes.number.isRequired,
+        humidity: PropTypes.number.isRequired,
+      }).isRequired,
+    }).isRequired,
+  }),
 };

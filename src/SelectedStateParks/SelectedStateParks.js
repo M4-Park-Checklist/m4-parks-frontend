@@ -42,15 +42,17 @@ export default SelectedStateParks;
 SelectedStateParks.propTypes = {
   parks: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      fullName: PropTypes.string.isRequired,
-      states: PropTypes.string.isRequired,
-      images: PropTypes.arrayOf(
-        PropTypes.shape({
-          url: PropTypes.string.isRequired,
-        })
-      ).isRequired,
-      weatherInfo: PropTypes.string.isRequired,
+      attributes: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        states: PropTypes.string.isRequired,
+        weatherInfo: PropTypes.string,
+        media: PropTypes.arrayOf(
+          PropTypes.shape({
+            url: PropTypes.string.isRequired,
+          })
+        ).isRequired,
+      }).isRequired,
     })
   ).isRequired,
   selectedState: PropTypes.string.isRequired,

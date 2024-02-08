@@ -7,7 +7,7 @@ import page from "../resources/page.png";
 import SelectedStateParks from "../SelectedStateParks/SelectedStateParks";
 import ParkDetails from "../ParkDetails/ParkDetails";
 
-const ParkChecklist = ({ apiLink, indivParkLink }) => {
+const ParkChecklist = ({ apiLink }) => {
   const [loading, setLoading] = useState(true);
   const [parks, setParks] = useState([]);
   const [park_code, setParkCode] = useState(null);
@@ -225,4 +225,5 @@ export default ParkChecklist;
 
 ParkChecklist.propTypes = {
   apiLink: PropTypes.string.isRequired,
+  indivParkLink: PropTypes.string,
 };
