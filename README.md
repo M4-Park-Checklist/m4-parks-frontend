@@ -16,7 +16,7 @@ NPS Service is an app designed to let you view all of the national parks in the 
 https://m4-parks-frontend.vercel.app/
 
 ## 📷 Preview of App
-![sample video of the project](https://github.com/Jesuitman/m3-rancid-tomatillos/blob/main/ezgif-1-a2537a03b6.gif?raw=true)
+![sample video of the project](https://github.com/M4-Park-Checklist/m4-parks-frontend/blob/main/NPS%20gif.gif?raw=true)
 
 ## 🍎 Context
 This app was the first time we worked with a Backend Team to cultivate a server of our own requests. We had a goal in mind to make a travel journal for anyone to use conviniently and are in the first stage of development. We started to use Axios for our fetches and plan to use Tailwind for styling. As time goes on we will be adding more to this project so that we can publish the app for use by anyone who wants to use it.
