@@ -1,9 +1,8 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import "./Card.css";
 
 function Card({ id, states, fullName, description, images, fetchParkDetails }) {
-
   return (
     <div className="park-card">
       <h2>{fullName}</h2>
@@ -19,12 +18,11 @@ function Card({ id, states, fullName, description, images, fetchParkDetails }) {
 }
 export default Card;
 
-
 Card.propTypes = {
     id: PropTypes.string,
     states: PropTypes.string.isRequired,
     fullName: PropTypes.string.isRequired,
-    weatherInfo: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
     images: PropTypes.shape({
       id: PropTypes.string,
       credit: PropTypes.string,
@@ -33,4 +31,5 @@ Card.propTypes = {
       caption: PropTypes.string,
       url: PropTypes.string.isRequired,
     }).isRequired,
+    fetchParkDetails: PropTypes.func.isRequired,
   };
