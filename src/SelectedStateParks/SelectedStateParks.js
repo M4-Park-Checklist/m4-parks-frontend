@@ -20,14 +20,14 @@ function SelectedStateParks({ parks, selectedState, fetchParkDetails }) {
     <div className="card-grid">
       {filteredState.map((park) => {
         const randomImage =
-          park.images[Math.floor(Math.random())];
+          park.media[Math.floor(Math.random())];
         return (
           <Card
             className="card"
             id={park.id}
             key={park.id}
             states={park.states}
-            fullName={park.fullName}
+            fullName={park.name}
             images={randomImage}
             description={park.description}
             fetchParkDetails={() => fetchParkDetails(park.id)}
