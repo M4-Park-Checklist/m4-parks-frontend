@@ -7,10 +7,10 @@ import page from "../resources/page.png";
 import SelectedStateParks from "../SelectedStateParks/SelectedStateParks";
 import ParkDetails from "../ParkDetails/ParkDetails";
 
-const ParkChecklist = ({ apiLink }) => {
+const ParkChecklist = ({ apiLink, indivParkLink }) => {
   const [loading, setLoading] = useState(true);
   const [parks, setParks] = useState([]);
-  const [parkID, setParkID] = useState(null);
+  const [park_code, setParkCode] = useState(null);
   const [checkedItems, setCheckedItems] = useState([]);
   const [selectedState, setSelectedState] = useState("");
   const [showResults, setShowResults] = useState(false);
@@ -71,38 +71,38 @@ const ParkChecklist = ({ apiLink }) => {
     "WY",
   ];
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${apiLink}&limit=500`);
-        setParks(response.data.data.attributes);
-        console.log(response);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setLoading(true);
+  const fetchParkDetails = async (park_code) => {
+    try {
+      const response = await axios.get(`${apiLink}/${park_code}`);
+      const selectedPark = response.data.data;
+
+      if (selectedPark) {
+        setParkCode(selectedPark.attributes.park_code);
+        setFoundPark(selectedPark);
+      } else {
+        console.error(`Park with id ${park_code} not found.`);
       }
-    };
-
-    fetchData();
-  }, [apiLink, selectedState, showResults, currentPage]);
-
-  const fetchParkDetails = (parkID) => {
-    // try{
-    //     const response = await axios.get( const indivParkLink = `https://m4-parks-backend.onrender.com/api/v0/parks/${parkID}`)
-    //     const selectedPark = (response.data.data)
-    // }
-    const selectedPark = parks.find((park) => park.id === parkID);
-
-    if (selectedPark) {
-      setParkID(selectedPark.id);
-      setFoundPark(selectedPark);
-      console.log(selectedPark);
-    } else {
-      console.error(`Park with id ${parkID} not found.`);
+      console.log(selectedPark.attributes.park_code)
+      navigate(`/Parks/${selectedState}/${park_code}`);
+    } catch (error) {
+      console.error("Error fetching park details:", error);
     }
-    navigate(`/Parks/${selectedState}/${parkID}`);
   };
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(apiLink);
+      setParks(response.data.data);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setLoading(true);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [apiLink, selectedState, showResults, currentPage, navigate]);
 
   const handleCheckboxChange = (parkId) => {
     setCheckedItems((prevCheckedItems) => {
@@ -162,7 +162,7 @@ const ParkChecklist = ({ apiLink }) => {
                   checked={checkedItems.includes(park.id)}
                   onChange={() => handleCheckboxChange(park.id)}
                 />
-                <label htmlFor={park.id}>{park.fullName}</label>
+                <label htmlFor={park.id}>{park.attributes.name}</label>
               </li>
             ))}
           </ul>
@@ -199,7 +199,7 @@ const ParkChecklist = ({ apiLink }) => {
       ) : null,
     },
     {
-      path: `/Parks/${selectedState}/${parkID}`,
+      path: `/Parks/${selectedState}/${park_code}`,
       element: selectedState ? <ParkDetails foundPark={foundPark} /> : null,
     },
     {
