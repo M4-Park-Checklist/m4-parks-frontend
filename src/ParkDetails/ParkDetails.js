@@ -19,6 +19,20 @@ function ParkDetails({ foundPark }) {
           alt={foundPark.attributes.media[0].altText}
         />
       </section>
+      <section className="park-description">
+        <div className="single-park-description">
+          <h3>Park Info</h3>
+          <p>{foundPark.attributes.designation}</p>
+          <p>{foundPark.attributes.description}</p>
+        </div>
+      </section>
+      <section className="active-alerts">
+        <div className="single-park-alerts">
+          <h3>Active Alerts</h3>
+          <p>{foundPark.attributes.active_alerts[0]}</p>
+          <p>{foundPark.attributes.active_alerts[1]}</p>
+        </div>
+      </section>
       <section className="park-info">
         <div className="park-details-activities">
           <h1 className="single-activities">Activities</h1>
@@ -39,7 +53,15 @@ function ParkDetails({ foundPark }) {
             Feels Like: {foundPark.attributes.current_weather.feels_like} °F
           </p>
           <p>Humidity: {foundPark.attributes.current_weather.humidity}%</p>
-          {/* <img>{foundPark.attributes.current_weather.icon}</img> */}
+          {/* <img src={foundPark.attributes.current_weather.icon}/> */}
+        </div>
+        <div className="park-details-amenities">
+          <h3>Amenities</h3>
+          <p>1. {foundPark.attributes.amenities[0]}</p>
+          <p>2. {foundPark.attributes.amenities[1]}</p>
+          <p>3. {foundPark.attributes.amenities[2]}</p>
+          <p>4. {foundPark.attributes.amenities[3]}</p>
+          <p>5. {foundPark.attributes.amenities[4]}</p>
         </div>
       </section>
     </div>

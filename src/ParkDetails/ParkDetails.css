@@ -27,7 +27,8 @@
 }
   
 .park-details-activities,
-.park-details-weather {
+.park-details-weather,
+.park-details-amenities {
     flex: 1;
     border: 1px solid #090909;
     background-color: antiquewhite;
@@ -58,6 +59,17 @@
 .single-image {
     max-width: 100%;
     height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+}
+
+.single-park-description,
+.single-park-alerts{
+    flex: 1;
+    border: 1px solid #090909;
+    background-color: antiquewhite;
+    margin: 10px;
+    text-align: center;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
 }
