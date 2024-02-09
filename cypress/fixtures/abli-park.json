@@ -1,0 +1,137 @@
+{
+    "data": {
+        "id": "77E0D7F0-1942-494A-ACE2-9004D2BDC59E",
+        "type": "park",
+        "attributes": {
+            "id": "77E0D7F0-1942-494A-ACE2-9004D2BDC59E",
+            "name": "Abraham Lincoln Birthplace National Historical Park",
+            "designation": "National Historical Park",
+            "description": "For over a century people from around the world have come to rural Central Kentucky to honor the humble beginnings of our 16th president, Abraham Lincoln. His early life on Kentucky's frontier shaped his character and prepared him to lead the nation through Civil War. Visit our country's first memorial to Lincoln, built with donations from young and old, and the site of his childhood home.",
+            "park_code": "abli",
+            "states": "KY",
+            "media": [
+                {
+                    "credit": "NPS Photo",
+                    "title": "The Memorial Building with fall colors",
+                    "altText": "The Memorial Building surrounded by fall colors",
+                    "caption": "Over 200,000 people a year come to walk up the steps of the Memorial Building to visit the site where Abraham Lincoln was born",
+                    "url": "https://www.nps.gov/common/uploads/structured_data/3C861078-1DD8-B71B-0B774A242EF6A706.jpg"
+                },
+                {
+                    "credit": "NPS Photo",
+                    "title": "The Memorial Building",
+                    "altText": "The first memorial erected to honor Abraham Lincoln",
+                    "caption": "The Memorial Building constructed on the traditional site of the birth of Abraham Lincoln.",
+                    "url": "https://www.nps.gov/common/uploads/structured_data/3C861263-1DD8-B71B-0B71EF9B95F9644F.jpg"
+                },
+                {
+                    "credit": "NPS Photo",
+                    "title": "The Symbolic Birth Cabin of Abraham Lincoln",
+                    "altText": "The symbolic birth cabin on the traditional site of the birth of Abraham Lincoln.",
+                    "caption": "The symbolic birth cabin of Abraham Lincoln.",
+                    "url": "https://www.nps.gov/common/uploads/structured_data/3C86137D-1DD8-B71B-0B978BACD7EBAEF1.jpg"
+                },
+                {
+                    "credit": "NPS Photo",
+                    "title": "Statue of the Lincoln Family in the Visitor Center",
+                    "altText": "Statue of the Lincoln family in the park's Visitor Center",
+                    "caption": "Visitors to the park can view the statue of the Lincoln family.",
+                    "url": "https://www.nps.gov/common/uploads/structured_data/3C8614D1-1DD8-B71B-0B1AF72CA452B051.jpg"
+                }
+            ],
+            "active_alerts": [
+                "Birthplace Unit Open Daily!",
+                "Kentucky Boyhood Home at Knob Creek Unit Visitor Center has Seasonal Hours"
+            ],
+            "things_to_do": [
+                "Astronomy",
+                "Stargazing",
+                "Food",
+                "Picnicking",
+                "Guided Tours",
+                "Self-Guided Tours - Walking",
+                "Hands-On",
+                "Junior Ranger Program",
+                "Wildlife Watching",
+                "Birdwatching",
+                "Park Film",
+                "Museum Exhibits",
+                "Shopping",
+                "Bookstore and Park Store",
+                "Gift Shop and Souvenirs"
+            ],
+            "amenities": [
+                "Accessible Rooms",
+                "Accessible Sites",
+                "Assistive Listening Systems",
+                "Audio Description",
+                "Automated External Defibrillator (AED)",
+                "Baby Changing Station",
+                "Benches/Seating",
+                "Bicycle - Rack",
+                "Braille",
+                "Captioned Media",
+                "Fire Extinguisher",
+                "First Aid Kit Available",
+                "First Aid/Medical Care Available",
+                "Gifts/Souvenirs/Books",
+                "Historical/Interpretive Information/Exhibits",
+                "Information",
+                "Information - Maps Available",
+                "Information - Ranger/Staff Member Present",
+                "Information Kiosk/Bulletin Board",
+                "Internet/WiFi Available",
+                "Junior Ranger Activity",
+                "Junior Ranger Booklet Available",
+                "Large Print",
+                "Parking - Auto",
+                "Parking - Bus/RV",
+                "Permits Issued",
+                "Recycling",
+                "Restroom",
+                "Restroom - Accessible",
+                "Restroom - Family",
+                "Scenic View/Photo Spot",
+                "Tactile Exhibit",
+                "Toilet - Flush",
+                "Trailhead",
+                "Trash/Litter Receptacles",
+                "Water - Bottle-Filling Station",
+                "Water - Drinking/Potable",
+                "Water - Non-Potable",
+                "Wheelchair Accessible",
+                "Wheelchairs Available"
+            ],
+            "hours_of_operation": {
+                "Birthplace Unit": {
+                    "wednesday": "9:00AM - 5:00PM",
+                    "monday": "9:00AM - 5:00PM",
+                    "thursday": "9:00AM - 5:00PM",
+                    "sunday": "9:00AM - 5:00PM",
+                    "tuesday": "9:00AM - 5:00PM",
+                    "friday": "9:00AM - 5:00PM",
+                    "saturday": "9:00AM - 5:00PM"
+                },
+                "Boyhood Unit": {
+                    "wednesday": "Closed",
+                    "monday": "10:00AM - 4:00PM",
+                    "thursday": "10:00AM - 4:00PM",
+                    "sunday": "10:00AM - 4:00PM",
+                    "tuesday": "Closed",
+                    "friday": "10:00AM - 4:00PM",
+                    "saturday": "10:00AM - 4:00PM"
+                }
+            },
+            "current_weather": {
+                "last_updated": "2024-02-09 12:15",
+                "temperature": 59.5,
+                "feels_like": 59.5,
+                "humidity": 64,
+                "uvi": 3.0,
+                "visibility": 9.0,
+                "condition": "Partly cloudy",
+                "icon": "//cdn.weatherapi.com/weather/64x64/day/116.png"
+            }
+        }
+    }
+}
