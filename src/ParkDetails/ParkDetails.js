@@ -6,31 +6,73 @@ function ParkDetails({ foundPark }) {
   if (!foundPark) {
     return null;
   }
-  console.log(foundPark);
+
+  let parkImage;
+  if (foundPark.attributes.media && foundPark.attributes.media.length > 1) {
+    parkImage = (
+      <img
+        className="single-image"
+        src={foundPark.attributes.media[1].url}
+        alt={foundPark.attributes.media[1].altText}
+      />
+    );
+  } else {
+    parkImage = (
+      <img
+        className="single-image"
+        src={foundPark.attributes.media[0].url}
+        alt={foundPark.attributes.media[0].altText}
+      />
+    );
+  }
+
   return (
     <div className="park-details-container">
       <div className="park-details-title">
         <h2 className="single-title">{foundPark.attributes.name}</h2>
       </div>
-      <section className="image-container">
-        <img
-          className="single-image"
-          src={foundPark.attributes.media[1].url}
-          alt={foundPark.attributes.media[0].altText}
-        />
+      <section className="image-container">{parkImage}</section>
+      <section className="park-description">
+        <div className="single-park-description">
+          <h3>Park Info</h3>
+          <p>{foundPark.attributes.designation}</p>
+          <p>{foundPark.attributes.description}</p>
+        </div>
+      </section>
+      <section className="active-alerts">
+        <div className="single-park-alerts">
+          <h3>Active Alerts</h3>
+          {foundPark.attributes.active_alerts[0] ? (
+            <>
+              <p>{foundPark.attributes.active_alerts[0]}</p>
+              <p>{foundPark.attributes.active_alerts[1]}</p>
+            </>
+          ) : (
+            <p>No Active Alerts at this Time</p>
+          )}
+        </div>
       </section>
       <section className="park-info">
-        <div className="park-details-activities">
+        <section className="park-details-activities">
           <h1 className="single-activities">Activities</h1>
-          <p>1. {foundPark.attributes.things_to_do[0]}</p>
-          <p>2. {foundPark.attributes.things_to_do[1]}</p>
-          <p>3. {foundPark.attributes.things_to_do[2]}</p>
-          <p>4. {foundPark.attributes.things_to_do[3]}</p>
-          <p>5. {foundPark.attributes.things_to_do[4]}</p>
-        </div>
+          {foundPark.attributes.things_to_do &&
+          foundPark.attributes.things_to_do.length > 0 ? (
+            foundPark.attributes.things_to_do
+              .slice(0, 10)
+              .map((activity, index) => (
+                <p key={index}>{`${index + 1}. ${activity}`}</p>
+              ))
+          ) : (
+            <p>No Information on Activities Available</p>
+          )}
+        </section>
         <div className="park-details-weather">
           <h1 className="single-weather">Weather</h1>
-          <h3>Current Weather</h3>
+          <img
+            className="weather-icon"
+            src={foundPark.attributes.current_weather.icon}
+            alt="Weather Icon"
+          />
           <p>{foundPark.attributes.current_weather.condition}</p>
           <p>
             Temperature: {foundPark.attributes.current_weather.temperature} °F
@@ -39,8 +81,20 @@ function ParkDetails({ foundPark }) {
             Feels Like: {foundPark.attributes.current_weather.feels_like} °F
           </p>
           <p>Humidity: {foundPark.attributes.current_weather.humidity}%</p>
-          {/* <img>{foundPark.attributes.current_weather.icon}</img> */}
         </div>
+        <section className="park-details-amenities">
+          <h3>Amenities</h3>
+          {foundPark.attributes.amenities &&
+          foundPark.attributes.amenities.length > 0 ? (
+            foundPark.attributes.amenities
+              .slice(0, 10)
+              .map((amenity, index) => (
+                <p key={index}>{`${index + 1}. ${amenity}`}</p>
+              ))
+          ) : (
+            <p>No Information on Amenities Available</p>
+          )}
+        </section>
       </section>
     </div>
   );

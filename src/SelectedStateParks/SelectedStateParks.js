@@ -13,7 +13,7 @@ function SelectedStateParks({ parks, selectedState, fetchParkDetails }) {
   );
 
   if (!filteredState || filteredState.length === 0) {
-    return <div>No parks match the selected state.</div>;
+    return <div className="no-state">No Parks are Available for this State</div>;
   }
 
   return (
