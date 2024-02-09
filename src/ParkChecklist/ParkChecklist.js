@@ -107,7 +107,6 @@ const ParkChecklist = ({ apiLink }) => {
       } else {
         console.error(`Park with id ${park_code} not found.`);
       }
-      console.log(selectedPark.attributes.park_code);
       navigate(`/Parks/${selectedState}/${park_code}`);
     } catch (error) {
       console.error("Error fetching park details:", error);
