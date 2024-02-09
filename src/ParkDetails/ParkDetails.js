@@ -31,9 +31,7 @@ function ParkDetails({ foundPark }) {
       <div className="park-details-title">
         <h2 className="single-title">{foundPark.attributes.name}</h2>
       </div>
-      <section className="image-container">
-        {parkImage}
-      </section>
+      <section className="image-container">{parkImage}</section>
       <section className="park-description">
         <div className="single-park-description">
           <h3>Park Info</h3>
@@ -57,36 +55,45 @@ function ParkDetails({ foundPark }) {
       <section className="park-info">
         <section className="park-details-activities">
           <h1 className="single-activities">Activities</h1>
-          {foundPark.attributes.things_to_do && foundPark.attributes.things_to_do.length > 0 ? (
-            foundPark.attributes.things_to_do.slice(0, 10).map((activity, index) => (
-              <p key={index}>{`${index + 1}. ${activity}`}</p>
-            ))
+          {foundPark.attributes.things_to_do &&
+          foundPark.attributes.things_to_do.length > 0 ? (
+            foundPark.attributes.things_to_do
+              .slice(0, 10)
+              .map((activity, index) => (
+                <p key={index}>{`${index + 1}. ${activity}`}</p>
+              ))
           ) : (
             <p>No Information on Activities Available</p>
           )}
         </section>
         <div className="park-details-weather">
           <h1 className="single-weather">Weather</h1>
-          <h3>Current Weather</h3>
-          <p>{foundPark.attributes.current_weather.condition}</p>
-          <p>Temperature: {foundPark.attributes.current_weather.temperature} °F</p>
-          <p>Feels Like: {foundPark.attributes.current_weather.feels_like} °F</p>
-          <p>Humidity: {foundPark.attributes.current_weather.humidity}%</p>
           <img
             className="weather-icon"
             src={foundPark.attributes.current_weather.icon}
             alt="Weather Icon"
           />
+          <p>{foundPark.attributes.current_weather.condition}</p>
+          <p>
+            Temperature: {foundPark.attributes.current_weather.temperature} °F
+          </p>
+          <p>
+            Feels Like: {foundPark.attributes.current_weather.feels_like} °F
+          </p>
+          <p>Humidity: {foundPark.attributes.current_weather.humidity}%</p>
         </div>
         <section className="park-details-amenities">
           <h3>Amenities</h3>
-            {foundPark.attributes.amenities && foundPark.attributes.amenities.length > 0 ? (
-              foundPark.attributes.amenities.slice(0, 10).map((amenity, index) => (
-              <p key={index}>{`${index + 1}. ${amenity}`}</p>
+          {foundPark.attributes.amenities &&
+          foundPark.attributes.amenities.length > 0 ? (
+            foundPark.attributes.amenities
+              .slice(0, 10)
+              .map((amenity, index) => (
+                <p key={index}>{`${index + 1}. ${amenity}`}</p>
               ))
-            ) : (
-              <p>No Information on Amenities Available</p>
-            )}
+          ) : (
+            <p>No Information on Amenities Available</p>
+          )}
         </section>
       </section>
     </div>
