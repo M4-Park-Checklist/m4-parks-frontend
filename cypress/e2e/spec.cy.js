@@ -121,7 +121,7 @@ describe('NPS Service App', () => {
       });
     });
 
-    it('Should navigate back to checklist view when back button is clicked twice', () => {
+    it('Should navigate back to checklist view when the page title is clicked', () => {
       cy.get('.page-title').click();
       cy.url().should('eq', 'http://localhost:3000/');
       cy.title().should('eq', 'NPS Service');
@@ -222,4 +222,15 @@ describe('NPS Service App', () => {
       cy.get('.checkbox-list li:last-child').contains('Zion National Park');
     });
   });
+
+  context('Bad URL testing', () => {
+    it('Should take you back to the main page when you put a bad URL in', () => {
+      cy.visit('http://localhost:3000/asgafgdfg');
+      cy.wait(5000)
+      cy.title().should('eq', 'NPS Service');
+      cy.get('.checkbox-list li').should('have.length', 2);
+      cy.get('.checkbox-list li:first-child').contains('Abraham Lincoln Birthplace National Historical Park');
+      cy.get('.checkbox-list li:last-child').contains('Zion National Park');
+    });
+  })
 })
