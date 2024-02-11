@@ -1,0 +1,159 @@
+{
+    "data": {
+        "id": "41BAB8ED-C95F-447D-9DA1-FCC4E4D808B2",
+        "type": "park",
+        "attributes": {
+            "id": "41BAB8ED-C95F-447D-9DA1-FCC4E4D808B2",
+            "name": "Zion National Park",
+            "designation": "National Park",
+            "description": "Follow the paths where people have walked for thousands of years. Gaze up at massive sandstone cliffs of cream, pink, and red that soar into a brilliant blue sky. Experience wilderness in a narrow slot canyon. Zion’s unique array of plants and animals will enchant you as you absorb the rich history of the past and enjoy the excitement of present-day adventures.",
+            "park_code": "zion",
+            "states": "UT",
+            "media": [
+                {
+                    "credit": "NPS/Shane Carte",
+                    "title": "The Watchman",
+                    "altText": "A triangular sandstone mountain overlooks green and yellow foliage. A cloudy blue sky is overhead.",
+                    "caption": "The Watchman in Zion Canyon",
+                    "url": "https://www.nps.gov/common/uploads/structured_data/68BFC1AC-BF96-629F-89D261D78F181C64.jpg"
+                },
+                {
+                    "credit": "NPS/Jesse Nelson",
+                    "title": "The Towers of the Virgin",
+                    "altText": "The sun sets behind large red and white towers of sandstone.",
+                    "caption": "The Towers of the Virgin in Zion Canyon",
+                    "url": "https://www.nps.gov/common/uploads/structured_data/69162F54-D4AF-8695-A42F97A8F9774C19.jpg"
+                },
+                {
+                    "credit": "NPS",
+                    "title": "Zion Canyon Visitor Center",
+                    "altText": "A sandstone and glass building surrounded by tall trees with a mountain behind it.",
+                    "caption": "The Zion Canyon Visitor Center is a great place to stop to learn about the park!",
+                    "url": "https://www.nps.gov/common/uploads/structured_data/68D46E7D-A116-A443-ABA04AD1DD785208.jpg"
+                },
+                {
+                    "credit": "NPS",
+                    "title": "The Narrows",
+                    "altText": "Tall, red, sandstone walls enclose a narrow river.",
+                    "caption": "The Narrows can be accessed at the end of Riverside Walk, just follow the river.",
+                    "url": "https://www.nps.gov/common/uploads/structured_data/68ED8C2C-A9D3-90B2-BBC96E7A21BC3744.jpg"
+                },
+                {
+                    "credit": "NPS",
+                    "title": "Kolob Arch",
+                    "altText": "A red sandstone arch under a clear blue sky.",
+                    "caption": "Deep in Zion's Wilderness site Kolob Arch, one of the largest free-standing arches in the world.",
+                    "url": "https://www.nps.gov/common/uploads/structured_data/69033C8D-B439-855D-6B260FB2F4CDB53B.jpg"
+                }
+            ],
+            "active_alerts": [
+                "Kolob Canyons Road passed Taylor Creek Trailhead temporarily closed",
+                "Seasonal Road Closure - Kolob Terrace Road past Maloney Hill closed",
+                "Seasonal Road Closure - Road to Lava Point and West Rim Trailhead closed",
+                "Lower Emerald Pools Trail Closed",
+                "Weeping Rock Shuttle Bus Stop, Parking Area, and Trail Closed",
+                "Closed trail bridge at Zion Lodge (Shuttle Stop #5)",
+                "Avoid flash floods",
+                "Toxic Cyanobacteria in the Virgin River and the streams of Zion National Park",
+                "Angels Landing Pilot Permit Program",
+                "Camp only in campgrounds"
+            ],
+            "things_to_do": [
+                "Arts and Culture",
+                "Astronomy",
+                "Stargazing",
+                "Biking",
+                "Road Biking",
+                "Camping",
+                "Backcountry Camping",
+                "Car or Front Country Camping",
+                "Horse Camping (see also Horse/Stock Use)",
+                "Canyoneering",
+                "Climbing",
+                "Rock Climbing",
+                "Guided Tours",
+                "Hiking",
+                "Front-Country Hiking",
+                "Junior Ranger Program",
+                "Wildlife Watching",
+                "Birdwatching",
+                "Park Film",
+                "Museum Exhibits",
+                "Shopping",
+                "Bookstore and Park Store"
+            ],
+            "amenities": [
+                "Accessible Rooms",
+                "Accessible Sites",
+                "Amphitheater",
+                "Assistive Listening Systems",
+                "Automated Entrance",
+                "Automated External Defibrillator (AED)",
+                "Backcountry Permits",
+                "Beach/Water Access",
+                "Benches/Seating",
+                "Bicycle - Rack",
+                "Bus/Shuttle Stop",
+                "Captioned Media",
+                "Cellular Signal",
+                "Electric Car Charging Station",
+                "Entrance Passes for Sale",
+                "Fire Extinguisher",
+                "First Aid Kit Available",
+                "First Aid/Medical Care Available",
+                "Food/Drink - Coffee",
+                "Food/Drink - Ice Cream",
+                "Food/Drink - Restaurant/Table Service",
+                "Gifts/Souvenirs/Books",
+                "Grill",
+                "Historical/Interpretive Information/Exhibits",
+                "Information",
+                "Information - Maps Available",
+                "Information - Park Newspaper Available",
+                "Information - Ranger/Staff Member Present",
+                "Information Kiosk/Bulletin Board",
+                "Internet/WiFi Available",
+                "Junior Ranger Activity",
+                "Junior Ranger Booklet Available",
+                "Parking - Auto",
+                "Parking - Bus/RV",
+                "Permits Issued",
+                "Pets Allowed",
+                "Picnic Table",
+                "Restroom",
+                "Restroom - Accessible",
+                "Restroom - Family",
+                "Scenic View/Photo Spot",
+                "Theater/Auditorium",
+                "Toilet - Flush",
+                "Trailhead",
+                "Trash/Litter Receptacles",
+                "Water - Bottle-Filling Station",
+                "Water - Drinking/Potable",
+                "Wheelchair Accessible",
+                "Wheelchairs Available"
+            ],
+            "hours_of_operation": {
+                "Zion National Park": {
+                    "wednesday": "All Day",
+                    "monday": "All Day",
+                    "thursday": "All Day",
+                    "sunday": "All Day",
+                    "tuesday": "All Day",
+                    "friday": "All Day",
+                    "saturday": "All Day"
+                }
+            },
+            "current_weather": {
+                "last_updated": "2024-02-09 10:15",
+                "temperature": 28.0,
+                "feels_like": 26.1,
+                "humidity": 85,
+                "uvi": 1.0,
+                "visibility": 9.0,
+                "condition": "Overcast",
+                "icon": "//cdn.weatherapi.com/weather/64x64/day/122.png"
+            }
+        }
+    }
+}
