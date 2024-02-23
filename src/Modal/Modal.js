@@ -8,11 +8,15 @@ function Modal({ isOpen, onClose, title, items }) {
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <h3>{title}</h3>
-        <ul>
-          {items.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
+        {items.length > 0 ? (
+          <ul>
+            {items.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        ) : (
+          <p>There doesn't seem to be any {title} information for this park.</p>
+        )}
       </div>
     </div>
   );

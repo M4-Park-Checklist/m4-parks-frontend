@@ -108,13 +108,13 @@ function ParkDetails({ foundPark }) {
       <Modal
         isOpen={showModal === 'activities'}
         onClose={() => toggleModal('activities')}
-        title="All Activities"
+        title="Activities"
         items={foundPark.attributes.things_to_do || []}
       />
       <Modal
         isOpen={showModal === 'amenities'}
         onClose={() => toggleModal('amenities')}
-        title="All Amenities"
+        title="Amenities"
         items={foundPark.attributes.amenities || []}
       />
     </div>
