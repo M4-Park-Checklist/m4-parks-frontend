@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./ParkDetails.css";
 
 function ParkDetails({ foundPark }) {
+  const [showAmenitiesModal, setShowAmenitiesModal] = useState(false);
+  const [showActivitiesModal, setShowActivitiesModal] = useState(false)
+
+  const toggleAmenitiesModal = () => {
+    setShowAmenitiesModal(!showAmenitiesModal);
+  };
+
+  const toggleActivitesModal = () => {
+    setShowActivitiesModal(!showActivitiesModal);
+  };
+
   if (!foundPark) {
     return null;
   }
@@ -56,7 +67,7 @@ function ParkDetails({ foundPark }) {
         <section className="park-details-activities">
           <h1 className="single-activities">Activities</h1>
           {foundPark.attributes.things_to_do &&
-          foundPark.attributes.things_to_do.length > 0 ? (
+            foundPark.attributes.things_to_do.length > 0 ? (
             foundPark.attributes.things_to_do
               .slice(0, 10)
               .map((activity, index) => (
@@ -65,6 +76,7 @@ function ParkDetails({ foundPark }) {
           ) : (
             <p>No Information on Activities Available</p>
           )}
+          <button onClick={toggleActivitesModal}>View Amenities</button>
         </section>
         <div className="park-details-weather">
           <h1 className="single-weather">Weather</h1>
@@ -85,7 +97,7 @@ function ParkDetails({ foundPark }) {
         <section className="park-details-amenities">
           <h3>Amenities</h3>
           {foundPark.attributes.amenities &&
-          foundPark.attributes.amenities.length > 0 ? (
+            foundPark.attributes.amenities.length > 0 ? (
             foundPark.attributes.amenities
               .slice(0, 10)
               .map((amenity, index) => (
@@ -94,8 +106,33 @@ function ParkDetails({ foundPark }) {
           ) : (
             <p>No Information on Amenities Available</p>
           )}
+          <button onClick={toggleAmenitiesModal}>View Amenities</button>
         </section>
       </section>
+      {showAmenitiesModal && (
+        <div className="modal-overlay" onClick={toggleAmenitiesModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <h3>All Amenities</h3>
+            <ul>
+              {foundPark.attributes.amenities.map((amenity, index) => (
+                <li key={index}>{amenity}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+      {showActivitiesModal && (
+        <div className="modal-overlay" onClick={toggleActivitesModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <h3>All Activities</h3>
+            <ul>
+              {foundPark.attributes.things_to_do.map((activity, index) => (
+                <li key={index}>{activity}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
