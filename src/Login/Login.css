@@ -1,0 +1,20 @@
+main {
+  justify-content: center;
+  min-height: 80vh;
+}
+
+form {
+  align-self: center;
+  flex-direction: column;
+  min-height: 20vh;
+}
+
+main, form {
+  display: flex;
+}
+
+input, button {
+  box-sizing: border-box;
+  padding: 1em;
+  margin: 0.5em;
+}

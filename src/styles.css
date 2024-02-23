@@ -3,6 +3,6 @@
     src: url("./fonts/DSMarkerFelt.ttf") format('truetype');
   }
   
-  body,button {
+  body, button, input::placeholder {
     font-family: 'WrittenFont', sans-serif; 
   }
