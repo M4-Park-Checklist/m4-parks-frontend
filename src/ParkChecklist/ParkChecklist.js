@@ -6,6 +6,7 @@ import "./ParkChecklist.css";
 import page from "../resources/page.png";
 import SelectedStateParks from "../SelectedStateParks/SelectedStateParks";
 import ParkDetails from "../ParkDetails/ParkDetails";
+import Login from '../Login/Login';
 
 const ParkChecklist = ({ apiLink }) => {
   const [loading, setLoading] = useState(true);
@@ -16,6 +17,7 @@ const ParkChecklist = ({ apiLink }) => {
   const [showResults, setShowResults] = useState(false);
   const [foundPark, setFoundPark] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [loggedIn, setLoggedIn] = useState(false);
   const navigate = useNavigate();
   const parksPerPage = 48;
   const states = [
@@ -82,6 +84,10 @@ const ParkChecklist = ({ apiLink }) => {
     setCurrentPage(newPage);
   };
 
+  const handleLoginNavigate = () => {
+    navigate(`/login`)
+  }
+
   const totalChecked = checkedItems.length;
   const indexOfLastPark = currentPage * parksPerPage;
   const indexOfFirstPark = indexOfLastPark - parksPerPage;
@@ -94,6 +100,7 @@ const ParkChecklist = ({ apiLink }) => {
         <>
           <div className="below-header-box">
             <p className="welcome-message">Welcome User!</p>
+            <button onClick={handleLoginNavigate}>Login</button>
             <div className="state-selector">
               <select onChange={handleStateChange} value={selectedState}>
                 <option value="">Select a State</option>
@@ -150,6 +157,14 @@ const ParkChecklist = ({ apiLink }) => {
           </div>
         </>
       ),
+    },
+    {
+      path: `/login`,
+      element: (
+        <div>
+          <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
+        </div>
+      )
     },
     {
       path: `/Parks/${selectedState}`,
