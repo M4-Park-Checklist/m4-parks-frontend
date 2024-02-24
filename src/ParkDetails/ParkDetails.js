@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./ParkDetails.css";
+import Modal from "../Modal/Modal";
+import WeatherModal from "../WeatherModal/WeatherModal";
 
 function ParkDetails({ foundPark }) {
+  const [showModal, setShowModal] = useState(null);
+
+  const toggleModal = (modalType) => {
+    setShowModal(showModal === modalType ? null : modalType);
+  };
+
   if (!foundPark) {
     return null;
   }
@@ -53,7 +61,10 @@ function ParkDetails({ foundPark }) {
         </div>
       </section>
       <section className="park-info">
-        <section className="park-details-activities">
+        <section
+          className="park-details-activities"
+          onClick={() => toggleModal("activities")}
+        >
           <h1 className="single-activities">Activities</h1>
           {foundPark.attributes.things_to_do &&
           foundPark.attributes.things_to_do.length > 0 ? (
@@ -66,7 +77,7 @@ function ParkDetails({ foundPark }) {
             <p>No Information on Activities Available</p>
           )}
         </section>
-        <div className="park-details-weather">
+        <div className="park-details-weather" onClick={() => toggleModal("weather")}>
           <h1 className="single-weather">Weather</h1>
           <img
             className="weather-icon"
@@ -74,15 +85,14 @@ function ParkDetails({ foundPark }) {
             alt="Weather Icon"
           />
           <p>{foundPark.attributes.current_weather.condition}</p>
-          <p>
-            Temperature: {foundPark.attributes.current_weather.temperature} °F
-          </p>
-          <p>
-            Feels Like: {foundPark.attributes.current_weather.feels_like} °F
-          </p>
+          <p>Temperature: {foundPark.attributes.current_weather.temperature} °F</p>
+          <p>Feels Like: {foundPark.attributes.current_weather.feels_like} °F</p>
           <p>Humidity: {foundPark.attributes.current_weather.humidity}%</p>
         </div>
-        <section className="park-details-amenities">
+        <section
+          className="park-details-amenities"
+          onClick={() => toggleModal("amenities")}
+        >
           <h3>Amenities</h3>
           {foundPark.attributes.amenities &&
           foundPark.attributes.amenities.length > 0 ? (
@@ -96,6 +106,29 @@ function ParkDetails({ foundPark }) {
           )}
         </section>
       </section>
+      {showModal === 'activities' && (
+        <Modal
+          isOpen={showModal === 'activities'}
+          onClose={() => toggleModal('activities')}
+          title="Activities"
+          items={foundPark.attributes.things_to_do || []}
+        />
+      )}
+      {showModal === 'amenities' && (
+        <Modal
+          isOpen={showModal === 'amenities'}
+          onClose={() => toggleModal('amenities')}
+          title="Amenities"
+          items={foundPark.attributes.amenities || []}
+        />
+      )}
+      {showModal === 'weather' && (
+        <WeatherModal
+        currentWeather={foundPark.attributes.weather_forecast || []}
+        isOpen={showModal === 'weather'}
+        onClose={() => toggleModal('weather')} // Pass onClose function here
+      />
+      )}
     </div>
   );
 }
