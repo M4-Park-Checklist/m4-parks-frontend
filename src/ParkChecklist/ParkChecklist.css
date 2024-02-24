@@ -106,7 +106,55 @@
     color: inherit; 
     cursor: pointer; 
   }
-  
+
+  .below-header-box {
+    margin-bottom: 20px;
+   }
+   
+   .sorting-options {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+   }
+   
+   .sort-by-state,
+   .sort-by-designation {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+    position: relative;
+   }
+   
+   .dropdown-menu-state,
+   .dropdown-menu-des {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(120px, 1fr));
+    gap: 5px;
+   }
+   
+   .dropdown-menu-state label,
+   .dropdown-menu-des label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+   }
+   
+   .dropdown-menu-state input,
+   .dropdown-menu-des input {
+    margin-right: 5px;
+   }
+   
+   .dropdown-toggle-state,
+   .dropdown-toggle-des {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+   }
+   
   @media screen and (max-width: 1100px) and (min-width: 601px){
     .checkbox-list li {
         background-color: white; 
