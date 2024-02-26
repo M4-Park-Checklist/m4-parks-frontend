@@ -18,6 +18,11 @@ const ParkChecklist = ({ apiLink }) => {
   const [foundPark, setFoundPark] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [selectedStateParks, setSelectedStateParks] = useState([]);
+  const [selectedDesignations, setSelectedDesignations] = useState([]);
+  const [selectedFilters, setSelectedFilters] = useState({ parks: [], designations: [] });
+  const [dropdownStateOpen, setDropdownStateOpen] = useState(false);
+  const [dropdownDesignationOpen, setDropdownDesignationOpen] = useState(false);
   const navigate = useNavigate();
   const parksPerPage = 48;
   const states = [
@@ -88,6 +93,43 @@ const ParkChecklist = ({ apiLink }) => {
     navigate(`/login`)
   }
 
+  const toggleDropdownState = () => {
+    setDropdownStateOpen(!dropdownStateOpen);
+    setDropdownDesignationOpen(false);
+  };
+
+  const toggleDropdownDesignation = () => {
+    setDropdownDesignationOpen(!dropdownDesignationOpen);
+    setDropdownStateOpen(false);
+  };
+
+  const handleStateCheckboxChange = (stateCode) => {
+    const parksInState = parks.filter(park => park.attributes.states === stateCode);
+    setSelectedFilters(prevFilters => ({
+      ...prevFilters,
+      parks: prevFilters.parks.some(park => park.attributes.states === stateCode)
+        ? prevFilters.parks.filter(park => park.attributes.states !== stateCode)
+        : [...prevFilters.parks, ...parksInState]
+    }));
+  };
+
+ const getUniqueDesignations = () => {
+  const designations = new Set();
+  parks.forEach((park) => {
+    designations.add(park.attributes.designation);
+  });
+  return Array.from(designations);
+ };
+
+ const handleDesignationCheckboxChange = (designation) => {
+  setSelectedFilters(prevFilters => ({
+    ...prevFilters,
+    designations: prevFilters.designations.includes(designation)
+      ? prevFilters.designations.filter(d => d !== designation)
+      : [...prevFilters.designations, designation]
+  }));
+ };
+ 
   const totalChecked = checkedItems.length;
   const indexOfLastPark = currentPage * parksPerPage;
   const indexOfFirstPark = indexOfLastPark - parksPerPage;
@@ -113,20 +155,115 @@ const ParkChecklist = ({ apiLink }) => {
               <button onClick={handleGoClick}>Go!</button>
             </div>
           </div>
+          <div className="sorting-options">
+            <div className="sort-by-state">
+              <label>
+                <div
+                  className={`dropdown ${dropdownStateOpen ? "open" : ""}`}
+                  onClick={toggleDropdownState}
+                >
+                  <div className="dropdown-toggle-state">Sort by State:</div>
+                  <div className="dropdown-menu-state">
+                    {states.map((stateCode) => (
+                      <label key={stateCode} className="dropdown-item">
+                        <input
+                          type="checkbox"
+                          defaultChecked={selectedStateParks.some(
+                            (park) => park.attributes.states === stateCode
+                          )}
+                          onChange={() => handleStateCheckboxChange(stateCode)}
+                        />
+                        {stateCode}
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div className="sort-by-designation">
+              <label>
+                <div
+                  className={`dropdown ${dropdownDesignationOpen ? "open" : ""}`}
+                  onClick={toggleDropdownDesignation}
+                >
+                  <div className="dropdown-toggle-des">
+                    Sort by Designation:
+                  </div>
+                  <div className="dropdown-menu-des">
+                    {getUniqueDesignations().map((designation) => (
+                      <label key={designation} className="dropdown-item">
+                        <input
+                          type="checkbox"
+                          defaultChecked={selectedDesignations.includes(
+                            designation
+                          )}
+                          onChange={() =>
+                            handleDesignationCheckboxChange(designation)
+                          }
+                        />
+                        {designation}
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
           <h2>{`${totalChecked}/${parks.length} parks visited`}</h2>
           <h2>Parks Checklist</h2>
           <ul className="checkbox-list">
-            {currentParks.map((park) => (
-              <li key={park.id}>
-                <input
-                  type="checkbox"
-                  id={park.id}
-                  checked={checkedItems.includes(park.id)}
-                  onChange={() => handleCheckboxChange(park.id)}
-                />
-                <label htmlFor={park.id}>{park.attributes.name}</label>
-              </li>
-            ))}
+            {selectedFilters.parks.length > 0 ? (
+              selectedFilters.parks
+                .filter(
+                  (park) =>
+                    selectedFilters.designations.length === 0 ||
+                    selectedFilters.designations.some(
+                      (designation) =>
+                        park.attributes.designation === designation
+                    )
+                )
+                .map((park) => (
+                  <li key={park.id}>
+                    <input
+                      type="checkbox"
+                      id={park.id}
+                      checked={checkedItems.includes(park.id)}
+                      onChange={() => handleCheckboxChange(park.id)}
+                    />
+                    <label htmlFor={park.id}>{park.attributes.name}</label>
+                  </li>
+                ))
+            ) : selectedFilters.designations.length > 0 ? (
+              parks
+                .filter((park) =>
+                  selectedFilters.designations.includes(
+                    park.attributes.designation
+                  )
+                )
+                .map((park) => (
+                  <li key={park.id}>
+                    <input
+                      type="checkbox"
+                      id={park.id}
+                      checked={checkedItems.includes(park.id)}
+                      onChange={() => handleCheckboxChange(park.id)}
+                    />
+                    <label htmlFor={park.id}>{park.attributes.name}</label>
+                  </li>
+                ))
+            ) : (
+              currentParks.map((park) => (
+                <li key={park.id}>
+                  <input
+                    type="checkbox"
+                    id={park.id}
+                    checked={checkedItems.includes(park.id)}
+                    onChange={() => handleCheckboxChange(park.id)}
+                  />
+                  <label htmlFor={park.id}>{park.attributes.name}</label>
+                </li>
+              ))
+            )}
           </ul>
           <div className="pagination">
             {currentPage !== 1 && (
@@ -185,7 +322,7 @@ const ParkChecklist = ({ apiLink }) => {
       element: <Navigate to="/" />,
     },
   ]);
-
+  
   return (
     <div
       className="park-checklist-container"
@@ -197,11 +334,11 @@ const ParkChecklist = ({ apiLink }) => {
       {loading ? <p className="loading-message">Loading Parks...</p> : routes}
     </div>
   );
-};
-
-export default ParkChecklist;
-
-ParkChecklist.propTypes = {
-  apiLink: PropTypes.string.isRequired,
-  indivParkLink: PropTypes.string,
-};
+  };
+  
+  export default ParkChecklist;
+  
+  ParkChecklist.propTypes = {
+    apiLink: PropTypes.string.isRequired,
+    indivParkLink: PropTypes.string,
+  };
