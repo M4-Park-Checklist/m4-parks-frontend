@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-size: cover;
+  background-image: url("../resources/page.png")
 }
 
 .App-header {

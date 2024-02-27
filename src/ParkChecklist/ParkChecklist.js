@@ -322,7 +322,7 @@ const ParkChecklist = ({ apiLink }) => {
   return (
     <div
       className="park-checklist-container"
-      style={{ backgroundImage: `url(${page})` }}
+      // style={{ backgroundImage: `url(${page})` }}
     >
       <Link to="/" className="header-link">
         <h1 className="page-title">National Park Service Service</h1>

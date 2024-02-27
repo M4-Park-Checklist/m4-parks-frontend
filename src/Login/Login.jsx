@@ -13,7 +13,7 @@ export default function Login({loggedIn, setLoggedIn}) {
 
   const sendUser = async (user) => {
     try {
-      const response = await axios.get(placeholder);
+      const response = await axios.get();
       setLoggedIn(true)
     } catch (error) {
       console.error("Error: incorrect login", error);
@@ -42,7 +42,7 @@ export default function Login({loggedIn, setLoggedIn}) {
   )
 }
 
-Login.PropTypes = {
+Login.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   setLoggedIn: PropTypes.func.isRequired
 }

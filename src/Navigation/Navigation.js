@@ -2,7 +2,7 @@ import "./Navigation.css";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
-export const Navigation = ({loggedIn, setLoggedIn}) => {
+const Navigation = ({loggedIn, setLoggedIn}) => {
   const navigate = useNavigate();
   const handleLoginNavigate = () => {
     setLoggedIn(false);
@@ -23,7 +23,9 @@ export const Navigation = ({loggedIn, setLoggedIn}) => {
   )
 }
 
-Navigation.PropTypes = {
+export default Navigation;
+
+Navigation.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   setLoggedIn: PropTypes.func.isRequired
 }
