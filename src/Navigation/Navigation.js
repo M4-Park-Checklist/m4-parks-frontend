@@ -1,5 +1,5 @@
 import "./Navigation.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const Navigation = ({loggedIn, setLoggedIn}) => {
@@ -14,6 +14,9 @@ const Navigation = ({loggedIn, setLoggedIn}) => {
 
   return (
     <section>
+      <Link to="/" className="header-link">
+        <h1 className="page-title">National Park Service Service</h1>
+      </Link>
       <p className="welcome-message">Welcome User!</p>
       <nav>
         {loggedIn ? <button onClick={handleLoginNavigate}>Logout</button> : <button onClick={handleLoginNavigate}>Login</button>}
