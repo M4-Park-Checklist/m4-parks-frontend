@@ -1,6 +1,8 @@
 import "./Login.css";
 import React, { useState } from "react";
 import { useRoutes, useNavigate, Link, Navigate } from "react-router-dom";
+import axios from "axios";
+import PropTypes from "prop-types";
 
 export default function Login({loggedIn, setLoggedIn}) {
   const navigate = useNavigate();
@@ -9,9 +11,17 @@ export default function Login({loggedIn, setLoggedIn}) {
     password: ''
   });
 
-  const sendUser = (user) => {
+  const sendUser = async (user) => {
+    try {
+      const response = await axios.get();
+      setLoggedIn(true)
+    } catch (error) {
+      console.error("Error: incorrect login", error);
+      alert("Incorrect credentials, please try again.");
+    }
     //send login info to backend for verification
-    if(setLoggedIn) {
+    if(loggedIn) {
+      //if login info comes back with a positive verification
       navigate(`/`);
     }
   };
@@ -30,4 +40,9 @@ export default function Login({loggedIn, setLoggedIn}) {
       </form>
     </main>
   )
+}
+
+Login.propTypes = {
+  loggedIn: PropTypes.bool.isRequired,
+  setLoggedIn: PropTypes.func.isRequired
 }
