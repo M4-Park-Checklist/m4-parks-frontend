@@ -87,9 +87,7 @@ const ParkChecklist = ({ apiLink }) => {
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
-  };
-
-  
+  };  
 
   const handleStateCheckboxChange = (stateCode) => {
     const parksInState = parks.filter(park => park.attributes.states === stateCode);
@@ -242,14 +240,6 @@ const ParkChecklist = ({ apiLink }) => {
       ),
     },
     {
-      path: `/login`,
-      element: (
-        <div>
-          <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
-        </div>
-      )
-    },
-    {
       path: `/Parks/${selectedState}`,
       element: showResults ? (
         <SelectedStateParks
@@ -272,7 +262,6 @@ const ParkChecklist = ({ apiLink }) => {
   return (
     <div
       className="park-checklist-container"
-      // style={{ backgroundImage: `url(${page})` }}
     >
       <Link to="/" className="header-link">
         <h1 className="page-title">National Park Service Service</h1>
