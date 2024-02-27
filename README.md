@@ -89,3 +89,12 @@ Joey -  It was our first time working with a backend team, we needed to discuss 
 - user wants to be able to get to the details of a park page by clicking on it somewhere on the checklist view (not being forced to go through state view)
 - user wants a wishlist or a planning to visit type of page
 
+
+
+
+
+
+
+
+
+
