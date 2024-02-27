@@ -8,12 +8,10 @@ import ParkDetails from "../ParkDetails/ParkDetails";
 import StateSort from "../Modal/StateSort";
 import DesignationSort from "../Modal/DesignationSort";
 
-const ParkChecklist = ({ apiLink, selectedState, setSelectedState, setShowResults }) => {
+const ParkChecklist = ({ parks, setParks, apiLink, selectedState, setSelectedState, showResults, setShowResults }) => {
   const [loading, setLoading] = useState(true);
-  const [parks, setParks] = useState([]);
-  const [park_code, setParkCode] = useState(null);
+
   const [checkedItems, setCheckedItems] = useState([]);
-  const [foundPark, setFoundPark] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedStateParks, setSelectedStateParks] = useState([]);
   const [selectedDesignations, setSelectedDesignations] = useState([]);

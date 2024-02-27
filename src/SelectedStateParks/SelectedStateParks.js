@@ -1,15 +1,11 @@
-import React from "react";
+import React, { useState } from 'react';
 import PropTypes from "prop-types";
 import Card from "../Card/Card";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./SelectedStateParks.css";
 
-function SelectedStateParks({ showResults, parks, selectedState, apiLink }) {
-  if (!parks || parks.length === 0) {
-    return <h3>No parks available.</h3>;
-  }
-
+function SelectedStateParks({ apiLink, parks, selectedState, setFoundPark, setParkCode }) {
   const navigate = useNavigate();
   const fetchParkDetails = async (park_code) => {
     try {
@@ -35,6 +31,10 @@ function SelectedStateParks({ showResults, parks, selectedState, apiLink }) {
 
   if (!filteredState || filteredState.length === 0) {
     return <div className="no-state">No Parks are Available for this State</div>;
+  }
+  
+  if (!parks || parks.length === 0) {
+    return <h3>No parks available.</h3>;
   }
 
   return (

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+
 import ParkChecklist from '../ParkChecklist/ParkChecklist';
-import { Routes, Route, Link, useLocation } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 import SelectedStateParks from '../SelectedStateParks/SelectedStateParks';
 import ParkDetails from '../ParkDetails/ParkDetails';
@@ -15,6 +16,9 @@ const App = () => {
   const [showResults, setShowResults] = useState(false);
   const [selectedState, setSelectedState] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
+  const [foundPark, setFoundPark] = useState(null);
+  const [parks, setParks] = useState([]);
+  const [park_code, setParkCode] = useState(null);
 
   return (
     <div className='App'>
@@ -22,9 +26,12 @@ const App = () => {
       <Routes>
         <Route path='/' element={
           <ParkChecklist 
-            apiLink={apiLink} 
+            apiLink={apiLink}
+            parks={parks}
+            setParks={setParks}
             selectedState={selectedState} 
             setSelectedState={setSelectedState} 
+            showResults={showResults}
             setShowResults={setShowResults} 
           />
         } />
@@ -36,10 +43,11 @@ const App = () => {
         } />
         <Route path='/Parks/:selectedState' element={
           <SelectedStateParks
-            showResults={showResults}
             parks={parks}
             selectedState={selectedState}
             apiLink={apiLink}
+            setFoundPark={setFoundPark}
+            setParkCode={setParkCode}
           />} 
         />
         <Route path='/Parks/:selectedState/:park_code' element={selectedState ? <ParkDetails foundPark={foundPark} /> : null} />
