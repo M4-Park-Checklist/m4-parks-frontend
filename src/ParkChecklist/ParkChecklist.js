@@ -7,6 +7,8 @@ import page from "../resources/page.png";
 import SelectedStateParks from "../SelectedStateParks/SelectedStateParks";
 import ParkDetails from "../ParkDetails/ParkDetails";
 import Login from '../Login/Login';
+import StateSort from "../Modal/StateSort";
+import DesignationSort from "../Modal/DesignationSort";
 
 const ParkChecklist = ({ apiLink }) => {
   const [loading, setLoading] = useState(true);
@@ -21,8 +23,6 @@ const ParkChecklist = ({ apiLink }) => {
   const [selectedStateParks, setSelectedStateParks] = useState([]);
   const [selectedDesignations, setSelectedDesignations] = useState([]);
   const [selectedFilters, setSelectedFilters] = useState({ parks: [], designations: [] });
-  const [dropdownStateOpen, setDropdownStateOpen] = useState(false);
-  const [dropdownDesignationOpen, setDropdownDesignationOpen] = useState(false);
   const navigate = useNavigate();
   const parksPerPage = 48;
   const states = [
@@ -31,7 +31,7 @@ const ParkChecklist = ({ apiLink }) => {
     "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
     "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC",
     "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"
-];
+  ];
 
   const fetchData = async () => {
     try {
@@ -93,16 +93,6 @@ const ParkChecklist = ({ apiLink }) => {
     navigate(`/login`)
   }
 
-  const toggleDropdownState = () => {
-    setDropdownStateOpen(!dropdownStateOpen);
-    setDropdownDesignationOpen(false);
-  };
-
-  const toggleDropdownDesignation = () => {
-    setDropdownDesignationOpen(!dropdownDesignationOpen);
-    setDropdownStateOpen(false);
-  };
-
   const handleStateCheckboxChange = (stateCode) => {
     const parksInState = parks.filter(park => park.attributes.states === stateCode);
     setSelectedFilters(prevFilters => ({
@@ -113,23 +103,23 @@ const ParkChecklist = ({ apiLink }) => {
     }));
   };
 
- const getUniqueDesignations = () => {
-  const designations = new Set();
-  parks.forEach((park) => {
-    designations.add(park.attributes.designation);
-  });
-  return Array.from(designations);
- };
+  const getUniqueDesignations = () => {
+    const designations = new Set();
+    parks.forEach((park) => {
+      designations.add(park.attributes.designation);
+    });
+    return Array.from(designations);
+  };
 
- const handleDesignationCheckboxChange = (designation) => {
-  setSelectedFilters(prevFilters => ({
-    ...prevFilters,
-    designations: prevFilters.designations.includes(designation)
-      ? prevFilters.designations.filter(d => d !== designation)
-      : [...prevFilters.designations, designation]
-  }));
- };
- 
+  const handleDesignationCheckboxChange = (designation) => {
+    setSelectedFilters(prevFilters => ({
+      ...prevFilters,
+      designations: prevFilters.designations.includes(designation)
+        ? prevFilters.designations.filter(d => d !== designation)
+        : [...prevFilters.designations, designation]
+    }));
+  };
+
   const totalChecked = checkedItems.length;
   const indexOfLastPark = currentPage * parksPerPage;
   const indexOfFirstPark = indexOfLastPark - parksPerPage;
@@ -157,57 +147,17 @@ const ParkChecklist = ({ apiLink }) => {
           </div>
           <div className="sorting-options">
             <div className="sort-by-state">
-              <label>
-                <div
-                  className={`dropdown ${dropdownStateOpen ? "open" : ""}`}
-                  onClick={toggleDropdownState}
-                >
-                  <div className="dropdown-toggle-state">Sort by State:</div>
-                  <div className="dropdown-menu-state">
-                    {states.map((stateCode) => (
-                      <label key={stateCode} className="dropdown-item">
-                        <input
-                          type="checkbox"
-                          defaultChecked={selectedStateParks.some(
-                            (park) => park.attributes.states === stateCode
-                          )}
-                          onChange={() => handleStateCheckboxChange(stateCode)}
-                        />
-                        {stateCode}
-                      </label>
-                    ))}
-                  </div>
-                </div>
-              </label>
+              <StateSort
+                states={states}
+                selectedStateParks={selectedStateParks}
+                handleStateCheckboxChange={handleStateCheckboxChange}
+              />
             </div>
-            <div className="sort-by-designation">
-              <label>
-                <div
-                  className={`dropdown ${dropdownDesignationOpen ? "open" : ""}`}
-                  onClick={toggleDropdownDesignation}
-                >
-                  <div className="dropdown-toggle-des">
-                    Sort by Designation:
-                  </div>
-                  <div className="dropdown-menu-des">
-                    {getUniqueDesignations().map((designation) => (
-                      <label key={designation} className="dropdown-item">
-                        <input
-                          type="checkbox"
-                          defaultChecked={selectedDesignations.includes(
-                            designation
-                          )}
-                          onChange={() =>
-                            handleDesignationCheckboxChange(designation)
-                          }
-                        />
-                        {designation}
-                      </label>
-                    ))}
-                  </div>
-                </div>
-              </label>
-            </div>
+            <DesignationSort
+        getUniqueDesignations={getUniqueDesignations}
+        selectedDesignations={selectedDesignations}
+        handleDesignationCheckboxChange={handleDesignationCheckboxChange}
+      />
           </div>
           <h2>{`${totalChecked}/${parks.length} parks visited`}</h2>
           <h2>Parks Checklist</h2>
@@ -299,7 +249,7 @@ const ParkChecklist = ({ apiLink }) => {
       path: `/login`,
       element: (
         <div>
-          <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
+          <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
         </div>
       )
     },
@@ -322,7 +272,7 @@ const ParkChecklist = ({ apiLink }) => {
       element: <Navigate to="/" />,
     },
   ]);
-  
+
   return (
     <div
       className="park-checklist-container"
@@ -334,11 +284,11 @@ const ParkChecklist = ({ apiLink }) => {
       {loading ? <p className="loading-message">Loading Parks...</p> : routes}
     </div>
   );
-  };
-  
-  export default ParkChecklist;
-  
-  ParkChecklist.propTypes = {
-    apiLink: PropTypes.string.isRequired,
-    indivParkLink: PropTypes.string,
-  };
+};
+
+export default ParkChecklist;
+
+ParkChecklist.propTypes = {
+  apiLink: PropTypes.string.isRequired,
+  indivParkLink: PropTypes.string,
+};
