@@ -89,9 +89,7 @@ const ParkChecklist = ({ apiLink }) => {
     setCurrentPage(newPage);
   };
 
-  const handleLoginNavigate = () => {
-    navigate(`/login`)
-  }
+  
 
   const toggleDropdownState = () => {
     setDropdownStateOpen(!dropdownStateOpen);
@@ -141,8 +139,7 @@ const ParkChecklist = ({ apiLink }) => {
       element: (
         <>
           <div className="below-header-box">
-            <p className="welcome-message">Welcome User!</p>
-            <button onClick={handleLoginNavigate}>Login</button>
+            
             <div className="state-selector">
               <select onChange={handleStateChange} value={selectedState}>
                 <option value="">Select a State</option>
