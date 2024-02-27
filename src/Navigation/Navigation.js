@@ -1,5 +1,6 @@
 import "./Navigation.css";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 export const Navigation = ({loggedIn, setLoggedIn}) => {
   const navigate = useNavigate();
@@ -20,4 +21,9 @@ export const Navigation = ({loggedIn, setLoggedIn}) => {
       </nav>
     </section>
   )
+}
+
+Navigation.PropTypes = {
+  loggedIn: PropTypes.bool.isRequired,
+  setLoggedIn: PropTypes.func.isRequired
 }

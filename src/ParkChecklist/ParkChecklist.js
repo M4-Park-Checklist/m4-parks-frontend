@@ -139,7 +139,6 @@ const ParkChecklist = ({ apiLink }) => {
       element: (
         <>
           <div className="below-header-box">
-            
             <div className="state-selector">
               <select onChange={handleStateChange} value={selectedState}>
                 <option value="">Select a State</option>
