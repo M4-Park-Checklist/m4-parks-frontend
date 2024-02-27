@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useRoutes, useNavigate, Link, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import PropTypes from "prop-types";
 import "./ParkChecklist.css";
-import SelectedStateParks from "../SelectedStateParks/SelectedStateParks";
-import ParkDetails from "../ParkDetails/ParkDetails";
 import StateSort from "../Modal/StateSort";
 import DesignationSort from "../Modal/DesignationSort";
 
 const ParkChecklist = ({ parks, setParks, apiLink, selectedState, setSelectedState, showResults, setShowResults }) => {
   const [loading, setLoading] = useState(true);
-
   const [checkedItems, setCheckedItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedStateParks, setSelectedStateParks] = useState([]);

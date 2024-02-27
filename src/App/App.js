@@ -15,7 +15,7 @@ const App = () => {
   const location = useLocation();
   const [showResults, setShowResults] = useState(false);
   const [selectedState, setSelectedState] = useState("");
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [foundPark, setFoundPark] = useState(null);
   const [parks, setParks] = useState([]);
   const [park_code, setParkCode] = useState(null);

@@ -13,14 +13,12 @@ const Navigation = ({loggedIn, setLoggedIn}) => {
   }
 
   return (
-    <section>
+    <section className="nav-header">
       <Link to="/" className="header-link">
         <h1 className="page-title">National Park Service Service</h1>
       </Link>
-      <p className="welcome-message">Welcome User!</p>
       <nav>
-        {loggedIn ? <button onClick={handleLoginNavigate}>Logout</button> : <button onClick={handleLoginNavigate}>Login</button>}
-        {loggedIn ?? <button onClick={visitSaved}>Saved Parks</button>}
+        {loggedIn ? <section className="banner"><p className="welcome-message">Welcome User!</p><button onClick={visitSaved}>Saved Parks</button><button onClick={handleLoginNavigate}>Logout</button></section> : <button onClick={handleLoginNavigate}>Login</button>}
       </nav>
     </section>
   )
