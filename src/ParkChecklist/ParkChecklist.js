@@ -3,23 +3,19 @@ import { useRoutes, useNavigate, Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import PropTypes from "prop-types";
 import "./ParkChecklist.css";
-import page from "../resources/page.png";
 import SelectedStateParks from "../SelectedStateParks/SelectedStateParks";
 import ParkDetails from "../ParkDetails/ParkDetails";
-import Login from '../Login/Login';
 import StateSort from "../Modal/StateSort";
 import DesignationSort from "../Modal/DesignationSort";
 
-const ParkChecklist = ({ apiLink }) => {
+const ParkChecklist = ({ apiLink, selectedState, setSelectedState }) => {
   const [loading, setLoading] = useState(true);
   const [parks, setParks] = useState([]);
   const [park_code, setParkCode] = useState(null);
   const [checkedItems, setCheckedItems] = useState([]);
-  const [selectedState, setSelectedState] = useState("");
   const [showResults, setShowResults] = useState(false);
   const [foundPark, setFoundPark] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [loggedIn, setLoggedIn] = useState(false);
   const [selectedStateParks, setSelectedStateParks] = useState([]);
   const [selectedDesignations, setSelectedDesignations] = useState([]);
   const [selectedFilters, setSelectedFilters] = useState({ parks: [], designations: [] });
@@ -240,23 +236,9 @@ const ParkChecklist = ({ apiLink }) => {
       ),
     },
     {
-      path: `/Parks/${selectedState}`,
-      element: showResults ? (
-        <SelectedStateParks
-          parks={parks}
-          selectedState={selectedState}
-          fetchParkDetails={fetchParkDetails}
-        />
-      ) : null,
-    },
-    {
       path: `/Parks/${selectedState}/${park_code}`,
       element: selectedState ? <ParkDetails foundPark={foundPark} /> : null,
-    },
-    {
-      path: "/*",
-      element: <Navigate to="/" />,
-    },
+    }
   ]);
 
   return (
