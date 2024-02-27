@@ -1,7 +1,5 @@
 import "./Navigation.css";
-import Login from '../Login/Login';
-import { useRoutes, useNavigate, Link, Navigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 export const Navigation = ({loggedIn, setLoggedIn}) => {
   const navigate = useNavigate();
@@ -9,14 +7,17 @@ export const Navigation = ({loggedIn, setLoggedIn}) => {
     setLoggedIn(false);
     navigate(`/login`);
   }
+  const visitSaved = () => {
+    navigate(`/saved`);
+  }
 
   return (
     <section>
       <p className="welcome-message">Welcome User!</p>
       <nav>
-        {loggedIn ? <button onClick={handleLoginNavigate}>Login</button> : <button onClick={handleLoginNavigate}>Logout</button>}
+        {loggedIn ? <button onClick={handleLoginNavigate}>Logout</button> : <button onClick={handleLoginNavigate}>Login</button>}
+        {loggedIn ?? <button onClick={visitSaved}>Saved Parks</button>}
       </nav>
     </section>
-    
   )
 }
