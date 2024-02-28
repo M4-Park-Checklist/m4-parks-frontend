@@ -1,0 +1,11 @@
+.nav-header, .banner {
+  display: flex;
+}
+
+.nav-header {
+  flex-direction: column;
+}
+
+.banner {
+  justify-content: center;
+}

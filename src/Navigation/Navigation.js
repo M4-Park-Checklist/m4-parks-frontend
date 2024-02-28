@@ -1,5 +1,5 @@
 import "./Navigation.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const Navigation = ({loggedIn, setLoggedIn}) => {
@@ -13,11 +13,12 @@ const Navigation = ({loggedIn, setLoggedIn}) => {
   }
 
   return (
-    <section>
-      <p className="welcome-message">Welcome User!</p>
+    <section className="nav-header">
+      <Link to="/" className="header-link">
+        <h1 className="page-title">National Park Service Service</h1>
+      </Link>
       <nav>
-        {loggedIn ? <button onClick={handleLoginNavigate}>Logout</button> : <button onClick={handleLoginNavigate}>Login</button>}
-        {loggedIn ?? <button onClick={visitSaved}>Saved Parks</button>}
+        {loggedIn ? <section className="banner"><p className="welcome-message">Welcome User!</p><button onClick={visitSaved}>Saved Parks</button><button onClick={handleLoginNavigate}>Logout</button></section> : <button onClick={handleLoginNavigate}>Login</button>}
       </nav>
     </section>
   )
