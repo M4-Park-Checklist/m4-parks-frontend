@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
+import axios from "axios";
 import ParkChecklist from '../ParkChecklist/ParkChecklist';
-import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 import SelectedStateParks from '../SelectedStateParks/SelectedStateParks';
 import ParkDetails from '../ParkDetails/ParkDetails';
@@ -13,12 +13,28 @@ import "./App.css"
 const App = () => {
   const apiLink = "https://m4-parks-backend.onrender.com/api/v0/parks/";
   const location = useLocation();
+  const [loading, setLoading] = useState(true);
   const [showResults, setShowResults] = useState(false);
   const [selectedState, setSelectedState] = useState("");
   const [loggedIn, setLoggedIn] = useState(true);
   const [foundPark, setFoundPark] = useState(null);
   const [parks, setParks] = useState([]);
   const [park_code, setParkCode] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(apiLink);
+        setParks(response.data.data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setLoading(true);
+      }
+    };
+
+    fetchData();
+  }, [apiLink]);
 
   return (
     <div className='App'>
@@ -33,6 +49,8 @@ const App = () => {
             setSelectedState={setSelectedState} 
             showResults={showResults}
             setShowResults={setShowResults} 
+            loading={loading}
+            setLoading={setLoading}
           />
         } />
         <Route path='/login' element={

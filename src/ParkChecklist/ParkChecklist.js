@@ -6,8 +6,8 @@ import "./ParkChecklist.css";
 import StateSort from "../Modal/StateSort";
 import DesignationSort from "../Modal/DesignationSort";
 
-const ParkChecklist = ({ parks, setParks, apiLink, selectedState, setSelectedState, showResults, setShowResults }) => {
-  const [loading, setLoading] = useState(true);
+const ParkChecklist = ({ parks, setParks, apiLink, selectedState, setSelectedState, showResults, setShowResults, loading, setLoading }) => {
+
   const [checkedItems, setCheckedItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedStateParks, setSelectedStateParks] = useState([]);
@@ -95,7 +95,8 @@ const ParkChecklist = ({ parks, setParks, apiLink, selectedState, setSelectedSta
 
   return (
     <div className="park-checklist-container">
-      {loading ?? <p className="loading-message">Loading Parks...</p>}
+      {loading ? <p className="loading-message">Loading Parks...</p> : (
+        <section>
       <div className="below-header-box">
         <div className="state-selector">
           <select onChange={handleStateChange} value={selectedState}>
@@ -205,7 +206,7 @@ const ParkChecklist = ({ parks, setParks, apiLink, selectedState, setSelectedSta
             {">>"}
           </button>
         )}
-      </div>
+      </div></section>)}
     </div>
   );
 };
