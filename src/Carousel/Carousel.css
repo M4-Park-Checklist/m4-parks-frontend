@@ -1,0 +1,4 @@
+.carousel-slide img {
+    width: 100%; /* Set the width of the images to fill the slide */
+    height: auto; /* Maintain the aspect ratio */
+  }
