@@ -18,3 +18,22 @@
 .App-link {
   color: #61dafb;
 }
+
+.page-enter {
+  opacity: 0;
+  transform: perspective(2000px) rotateY(90deg) scaleX(0.5);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: perspective(2000px) rotateY(0deg) scaleX(1);
+  transition: opacity 500ms, transform 500ms;
+}
+.page-exit {
+  opacity: 1;
+  transform: perspective(2000px) rotateY(0deg) scaleX(1);
+}
+.page-exit-active {
+  opacity: 0;
+  transform: perspective(2000px) rotateY(-90deg) scaleX(0.5);
+  transition: opacity 500ms, transform 500ms;
+}

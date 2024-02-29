@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import ParkChecklist from '../ParkChecklist/ParkChecklist';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Navigation from '../Navigation/Navigation';
 import SelectedStateParks from '../SelectedStateParks/SelectedStateParks';
 import ParkDetails from '../ParkDetails/ParkDetails';
@@ -39,7 +40,9 @@ const App = () => {
   return (
     <div className='App'>
       <Navigation loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
-      <Routes>
+      <TransitionGroup>
+      <CSSTransition key={location.key} classNames="page" timeout={5000}>
+      <Routes location={location}>
         <Route path='/' element={
           <ParkChecklist 
             apiLink={apiLink}
@@ -71,6 +74,8 @@ const App = () => {
         <Route path='/Parks/:selectedState/:park_code' element={selectedState ? <ParkDetails foundPark={foundPark} /> : null} />
         <Route path='*' element={<ErrorPage />} />
       </Routes>
+      </CSSTransition>
+      </TransitionGroup>
     </div>
   );
 };
