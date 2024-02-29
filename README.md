@@ -4,7 +4,7 @@ NPS Service is an app designed to let you view all of the national parks in the 
 ## 💻 Installation instructions
 1. Open project on Github
 2. Clone down the repo
-3. cd into the repo and run npm install
+3. cd into the repo and run `npm install`, `npm i @material-tailwind/react`,
 4. Run npm start
 5. When the window opens, you should have access to a checklist of parks 
 6. You should be able to check off parks and see your `parks visited` increase
