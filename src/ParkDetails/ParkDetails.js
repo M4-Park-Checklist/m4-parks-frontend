@@ -126,7 +126,7 @@ function ParkDetails({ foundPark }) {
         <WeatherModal
         currentWeather={foundPark.attributes.weather_forecast || []}
         isOpen={showModal === 'weather'}
-        onClose={() => toggleModal('weather')} // Pass onClose function here
+        onClose={() => toggleModal('weather')} 
       />
       )}
     </div>
