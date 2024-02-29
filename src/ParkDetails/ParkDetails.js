@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import CarouselDefault from "../Carousel/Carousel";
+import NewCarousel from "../Carousel/Carousel";
 import "./ParkDetails.css";
 import Modal from "../Modal/Modal";
 import WeatherModal from "../WeatherModal/WeatherModal";
@@ -16,24 +16,11 @@ function ParkDetails({ foundPark }) {
     return null;
   }
 
-  let parkImage;
-  if (foundPark.attributes.media && foundPark.attributes.media.length > 1) {
-    parkImage = (
-      <img
-        className="h-full w-full object-cover"
-        src={foundPark.attributes.media[1].url}
-        alt={foundPark.attributes.media[1].altText}
-      />
-    );
-  } else {
-    parkImage = (
-      <img
-        className="h-full w-full object-cover"
-        src={foundPark.attributes.media[0].url}
-        alt={foundPark.attributes.media[0].altText}
-      />
-    );
-  }
+  let parkMedia;
+  console.log(foundPark.attributes.media, "pics")
+  if (foundPark.attributes.media.length > 0) {
+    parkMedia = foundPark.attributes.media
+  } 
 
   return (
     <div className="park-details-container">
@@ -41,8 +28,7 @@ function ParkDetails({ foundPark }) {
         <h2 className="single-title">{foundPark.attributes.name}</h2>
       </div>
       <section className="image-container">
-        {/* <CarouselDefault parkImage={parkImage}/> */}
-        {parkImage}
+        <NewCarousel parkMedia={parkMedia}/>
       </section>
       <section className="park-description">
         <div className="single-park-description">
