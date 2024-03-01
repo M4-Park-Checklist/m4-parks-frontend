@@ -6,8 +6,8 @@ export default function NewCarousel({ parkMedia }) {
   console.log(parkMedia);
   let images = parkMedia.map((image, index) => (
     <img
-      key={index} // Don't forget to add a unique key for each image in a list
-      className="carousel-image"
+      key={index}
+      className="h-full w-full object-cover"
       src={image.url}
       alt={image.altText}
     />
