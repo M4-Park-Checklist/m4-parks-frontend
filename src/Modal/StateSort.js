@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 
 const StateSort = ({ states, selectedStateParks, handleStateCheckboxChange }) => {
   const [dropdownStateOpen, setDropdownStateOpen] = useState(false);
+
+
   const toggleDropdownState = () => {
     setDropdownStateOpen(!dropdownStateOpen);
   };
@@ -19,7 +21,7 @@ const StateSort = ({ states, selectedStateParks, handleStateCheckboxChange }) =>
                   type="checkbox"
                   defaultChecked={selectedStateParks.some((park) => park.attributes.states === stateCode)}
                   onChange={() => handleStateCheckboxChange(stateCode)}
-                />
+                  />
                 {stateCode}
               </label>
             ))}

@@ -26,6 +26,7 @@ This app was the first time we worked with a Backend Team to cultivate a server 
 - Joey - https://www.linkedin.com/in/joe-stewart-1b1a97114/, https://github.com/JoeyStewart
 - Kam - https://www.linkedin.com/in/kameron-kennedy-pe/, https://github.com/kameronk92
 - Paul - https://www.linkedin.com/in/paul-bennett-dev, https://github.com/pcbennett108
+- Arden - https://www.linkedin.com/in/arden-ranta/, https://github.com/tenthwalker
 
 ## 🖇️ Learning Goals
 ### Backend Integration: 
@@ -88,6 +89,41 @@ Joey -  It was our first time working with a backend team, we needed to discuss 
 - user wants the ability to filter parks by activity she wants to do
 - user wants to be able to get to the details of a park page by clicking on it somewhere on the checklist view (not being forced to go through state view)
 - user wants a wishlist or a planning to visit type of page
+
+
+## Part 2
+
+## 🖇️ Learning Goals
+### Backend Integration: 
+
+### Sprint Based development:
+
+### New Team Dyanmics with Backend Team:
+
+### Error Handling: 
+
+### Tailwind: 
+
+## 🎆 Wins && 🔥 Challenges#
+### Wins:
+Lex - This is a celebration of everything I have learned so far! I got to work with a backend team and learn more about what it takes to be a full stack dev.
+
+Joey - Getting the sort function to work was a massive win. I wanted it to be dynamic enough so that you could search for any park with any of the filter conditions provided. It turned out to be tougher of a task than I thought but the functionality of it turned out really nice.
+
+Arden - Wins would be finding useful libraries and documentation resources for our stretch, having strong collaboration within the frontend group, and integrating Tailwind quickly
+
+### Challenges: 
+Lex - pivoting from flutter and tailwind to just tailwind was disappointing but a needed step. I also felt greatly challenged by the weather modal because it had different rule than I had used before.
+
+Joey - Having to pivot from Flutter to just Tailwind. We found out that it is possible to use Flutter inconjunction with React, but you have to go through less than professional means to get it working together. We decided to scrap that idea, since it would have needed an entire new app for it to work and with pressing time, we decided all to get up to speed and learn Tailwind and participate it it's implementation.
+
+## 📝 Observations  
+Lex - Tailwind styling is extremely different compared to regular css styling, building rulesets in your actual xml was something I was not used to. I had to do a lot of learning to get tailwind working.
+
+Joey -  Flutter looks like an incredible piece of technology that I wish we had the opportunity to use. The rules for Tailwind are a bit harder to make work with our previous css styling. With time, we got better and better, but previously easy tasks became much more tedious. Either way the results were better and I hope to use it more in the future.
+
+Arden - Tailwind is extremely versatile, refactoring is to be embraced, not feared, and that pivoting focus and direction when necessary can be valuable
+
 
 
 
