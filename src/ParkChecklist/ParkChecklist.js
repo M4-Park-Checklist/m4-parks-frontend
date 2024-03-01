@@ -101,7 +101,7 @@ const ParkChecklist = ({ parks, setParks, apiLink, selectedState, setSelectedSta
         <section>
           <div className="below-header-box">
             <label htmlFor="state-selector">Select a State:</label>
-        <div className="state-selector">
+            <div className="state-selector">
               <select onChange={handleStateChange} value={selectedState}>
                 <option value="">Select a State</option>
                 {states.map((stateCode) => (
@@ -223,7 +223,8 @@ const ParkChecklist = ({ parks, setParks, apiLink, selectedState, setSelectedSta
                 {">>"}
               </CustomButton>
             )}
-          </div></section>)}
+          </div>
+        </section>)}
     </div>
   );
 };
