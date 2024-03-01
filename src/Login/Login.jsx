@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useRoutes, useNavigate, Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import PropTypes from "prop-types";
+import CustomButton from "../ButtonRule";
 
 export default function Login({loggedIn, setLoggedIn}) {
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ export default function Login({loggedIn, setLoggedIn}) {
           username: e.target.value})}} required></input>
         <input type="text" placeholder="password" onChange={(e) => {setUser({...user,
           password: e.target.value})}} required></input>
-        <button type="submit">Submit</button>
+        <CustomButton type="submit">Submit</CustomButton>
       </form>
     </main>
   )
