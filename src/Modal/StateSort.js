@@ -2,14 +2,11 @@ import React, {useState} from "react";
 
 const StateSort = ({ states, selectedStateParks, handleStateCheckboxChange }) => {
   const [dropdownStateOpen, setDropdownStateOpen] = useState(false);
-  const [dropdownDesignationOpen, setDropdownDesignationOpen] = useState(false);
 
 
   const toggleDropdownState = () => {
     setDropdownStateOpen(!dropdownStateOpen);
   };
-
-  
 
   return (
     <div className="sort-by-state">
@@ -23,7 +20,7 @@ const StateSort = ({ states, selectedStateParks, handleStateCheckboxChange }) =>
                   type="checkbox"
                   defaultChecked={selectedStateParks.some((park) => park.attributes.states === stateCode)}
                   onChange={() => handleStateCheckboxChange(stateCode)}
-                />
+                  />
                 {stateCode}
               </label>
             ))}
