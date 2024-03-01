@@ -14,13 +14,13 @@ const DesignationSort = ({ getUniqueDesignations, selectedDesignations, handleDe
           <div className="dropdown-toggle-des">Sort by Designation:</div>
           <div className="dropdown-menu-des">
             {getUniqueDesignations().map((designation) => (
-              <label key={designation} className="dropdown-item">
+              <label key={designation || "no-designation"} className="dropdown-item">
                 <input
                   type="checkbox"
                   defaultChecked={selectedDesignations.includes(designation)}
                   onChange={() => handleDesignationCheckboxChange(designation)}
                 />
-                {designation}
+                {designation || "No Designation"}
               </label>
             ))}
           </div>
