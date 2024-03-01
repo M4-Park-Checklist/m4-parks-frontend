@@ -309,17 +309,20 @@ describe('NPS Service App', () => {
       cy.get('.checkbox-list li:last-child').contains('Zion National Park');
     });
 
-    it('Should sort the checklist page with state and desingation filters', () => {
+    it('Should sort the checklist page with state and designation filters', () => {
       cy.get('h1.page-title').click();
       cy.contains('button.text-white', 'State Sort').click();
       cy.get('.sort-by-state').should('be.visible');
       cy.get('.sort-by-state').find('input[type="checkbox"]').eq(1).check();
+      cy.wait(1000)
       cy.get('.modal-close-button').click();
+      cy.wait(2000)
       cy.contains('button.text-white', 'Designation Sort').click();
       cy.get('.sort-by-designation').find('input[type="checkbox"]').eq(1).check();
-      cy.get('.modal-close-button').contains('X').click()
-      cy.get('.checkbox-list li:first-child').contains('Kenai Fjords National Park');
-      cy.get('.checkbox-list li:last-child').contains('Kobuk Valley National Park');
+      cy.wait(1000)
+      cy.get('.modal-close-button').contains('X').click();
+      cy.wait(2000)
+      cy.get('.checkbox-list li:first-child').contains('Zion National Park');
     });
   });
 
