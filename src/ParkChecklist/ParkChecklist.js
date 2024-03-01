@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import "./ParkChecklist.css";
 import StateSort from "../Modal/StateSort";
 import DesignationSort from "../Modal/DesignationSort";
+import CustomButton from "../ButtonRule";
 
 const ParkChecklist = ({ parks, setParks, apiLink, selectedState, setSelectedState, showResults, setShowResults, loading, setLoading }) => {
 
@@ -107,7 +108,7 @@ const ParkChecklist = ({ parks, setParks, apiLink, selectedState, setSelectedSta
               </option>
             ))}
           </select>
-          <button onClick={handleGoClick}>Go!</button>
+          <CustomButton onClick={handleGoClick}>Go!</CustomButton>
         </div>
       </div>
       <div className="sorting-options">
@@ -182,29 +183,29 @@ const ParkChecklist = ({ parks, setParks, apiLink, selectedState, setSelectedSta
       </ul>
       <div className="pagination">
         {currentPage !== 1 && (
-          <button onClick={() => handlePageChange(1)}>{"<<"}</button>
+          <CustomButton onClick={() => handlePageChange(1)}>{"<<"}</CustomButton>
         )}
         {currentPage > 1 && (
-          <button onClick={() => handlePageChange(currentPage - 1)}>
+          <CustomButton onClick={() => handlePageChange(currentPage - 1)}>
             {"<"}
-          </button>
+          </CustomButton>
         )}
         <span>{`${currentPage}/${Math.ceil(
           parks.length / parksPerPage
         )}`}</span>
         {currentPage < Math.ceil(parks.length / parksPerPage) && (
-          <button onClick={() => handlePageChange(currentPage + 1)}>
+          <CustomButton onClick={() => handlePageChange(currentPage + 1)}>
             {">"}
-          </button>
+          </CustomButton>
         )}
         {currentPage !== Math.ceil(parks.length / parksPerPage) && (
-          <button
+          <CustomButton
             onClick={() =>
               handlePageChange(Math.ceil(parks.length / parksPerPage))
             }
           >
             {">>"}
-          </button>
+          </CustomButton>
         )}
       </div></section>)}
     </div>

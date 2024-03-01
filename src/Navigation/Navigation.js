@@ -1,5 +1,6 @@
 import "./Navigation.css";
 import { useNavigate, Link } from "react-router-dom";
+import CustomButton from "../ButtonRule";
 import PropTypes from "prop-types";
 
 const Navigation = ({loggedIn, setLoggedIn}) => {
@@ -18,7 +19,7 @@ const Navigation = ({loggedIn, setLoggedIn}) => {
         <h1 className="page-title">National Park Service Service</h1>
       </Link>
       <nav>
-        {loggedIn ? <section className="banner"><p className="welcome-message">Welcome User!</p><button className="bg-green-500 hover:bg-pink-300 text-pink font-bold py-2 px-4 mt-4 rounded" onClick={visitSaved}>Saved Parks</button><button onClick={handleLoginNavigate}>Logout</button></section> : <button onClick={handleLoginNavigate}>Login</button>}
+        {loggedIn ? <section className="banner"><p className="welcome-message">Welcome User!</p><CustomButton onClick={visitSaved}>Saved Parks</CustomButton><CustomButton onClick={handleLoginNavigate}>Logout</CustomButton></section> : <CustomButton onClick={handleLoginNavigate}>Login</CustomButton>}
       </nav>
     </section>
   )

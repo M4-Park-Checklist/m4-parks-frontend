@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./Card.css";
+import CustomButton from "../ButtonRule";
 
 function Card({ id, states, fullName, description, images, fetchParkDetails }) {
   return (
@@ -12,7 +13,7 @@ function Card({ id, states, fullName, description, images, fetchParkDetails }) {
       </div>
       <h3>Description</h3>
       <p>{description}</p>
-      <button onClick={() => fetchParkDetails(id)}>See More!</button>
+      <CustomButton onClick={() => fetchParkDetails(id)}>See More!</CustomButton>
     </div>
   );
 }
