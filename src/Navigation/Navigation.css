@@ -9,3 +9,9 @@
 .banner {
   justify-content: center;
 }
+
+@media screen and (max-width: 600px) {
+  .welcome-message {
+    margin: 5px;
+  }
+}
