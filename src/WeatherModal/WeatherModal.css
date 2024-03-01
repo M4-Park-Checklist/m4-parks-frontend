@@ -1,0 +1,19 @@
+.weather-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.weather-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.weather-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 10px;
+}
