@@ -8,24 +8,27 @@ function WeatherModal({ currentWeather, isOpen, onClose }) {
             onClose();
         }
     };
+    console.log(currentWeather.attributes.forecast[1])
+    const forecast = currentWeather.attributes.forecast;
 
     return (
         <div className={`modal-overlay ${isOpen ? 'open' : 'closed'}`} onClick={handleCloseModal}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                <h2>7 Day Weather Forecast</h2>
+                <h2>3 Day Weather Forecast</h2>
                 <div className="weather-grid">
-                    {currentWeather.map((day, index) => (
+                    {forecast.map((day, index) => (
                         <div key={index} className="weather-day">
-                            <h3>{day.day}</h3>
                             <img
                                 className="weather-icon"
                                 src={day.icon}
                                 alt="Weather Icon"
-                            />
+                                />
+                            <h3>Date: {day.date}</h3>
                             <p>{day.condition}</p>
-                            <p>Temperature: {day.temperature} °F</p>
-                            <p>Feels Like: {day.feels_like} °F</p>
-                            <p>Humidity: {day.humidity}%</p>
+                            <p>Max Temp: {day.max_temp} °F</p>
+                            <p>Min Temp: {day.min_temp} °F</p>
+                            <p>Sunrise: {day.sunrise}</p>
+                            <p>Sunset: {day.sunset}</p>
                         </div>
                     ))}
                 </div>

@@ -5,16 +5,21 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./SelectedStateParks.css";
 
-function SelectedStateParks({ apiLink, parks, selectedState, setFoundPark, setParkCode }) {
+function SelectedStateParks({ apiLink, parks, selectedState, setFoundPark, setParkCode, weatherLink,  setWeather }) {
   const navigate = useNavigate();
   const fetchParkDetails = async (park_code) => {
     try {
       const response = await axios.get(`${apiLink}/${park_code}`);
       const selectedPark = response.data.data;
 
-      if (selectedPark) {
+      const weatherResponse = await axios.get(`${weatherLink.replace(':id', park_code)}`);
+      const weatherData = weatherResponse.data.data;
+      
+      if (selectedPark && weatherData)  {
         setParkCode(selectedPark.attributes.park_code);
         setFoundPark(selectedPark);
+        setWeather(weatherData);
+
       } else {
         console.error(`Park with id ${park_code} not found.`);
       }

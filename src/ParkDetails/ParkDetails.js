@@ -5,22 +5,21 @@ import "./ParkDetails.css";
 import Modal from "../Modal/Modal";
 import WeatherModal from "../WeatherModal/WeatherModal";
 
-function ParkDetails({ foundPark }) {
+function ParkDetails({ foundPark, weather }) {
   const [showModal, setShowModal] = useState(null);
-
+console.log(weather)
   const toggleModal = (modalType) => {
     setShowModal(showModal === modalType ? null : modalType);
   };
 
-  if (!foundPark) {
-    return null;
+  if (!foundPark || !weather || !weather.attributes.forecast) {
+    return null; 
   }
 
   let parkMedia;
-  console.log(foundPark.attributes.media, "pics")
-  if (foundPark.attributes.media.length > 0) {
-    parkMedia = foundPark.attributes.media
-  } 
+  if (foundPark.attributes.media && foundPark.attributes.media.length > 0) {
+    parkMedia = foundPark.attributes.media;
+  }
 
   return (
     <div className="park-details-container">
@@ -114,7 +113,7 @@ function ParkDetails({ foundPark }) {
       )}
       {showModal === 'weather' && (
         <WeatherModal
-        currentWeather={foundPark.attributes.weather_forecast || []}
+        currentWeather={weather || []}
         isOpen={showModal === 'weather'}
         onClose={() => toggleModal('weather')} 
       />

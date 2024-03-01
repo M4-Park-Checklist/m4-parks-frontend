@@ -1,182 +1,192 @@
 .checkbox-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.checkbox-list li {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin: 5px;
+  margin-bottom: 10px;
+  width: calc(95% / 3);
+  box-sizing: border-box;
+}
+
+.checkbox-list li input[type="checkbox"]:checked~label {
+  background-color: orange;
+}
+
+input[type="checkbox"] {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.welcome-message {
+  margin-top: 10px;
+  margin-right: 100px;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+.below-header-box {
+  display: flex;
+  justify-content: center;
+}
+
+.state-selector {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.state-selector select {
+  padding: 5px;
+  margin-right: 5px;
+}
+
+.state-selector button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.pagination button:hover {
+  color: orange;
+}
+
+.page-title {
+  position: relative;
+  margin: 10px auto;
+  border: 1px solid #090909;
+  background-color: antiquewhite;
+  width: 300px;
+  height: 50px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  font-size: larger;
+}
+
+.park-checklist-container {
+  position: relative;
+  min-height: 100vh;
+  background-size: cover;
+  padding-top: 50px;
+}
+
+.loading-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+  z-index: 999;
+}
+
+.header-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.below-header-box {
+  margin-bottom: 20px;
+}
+
+.sorting-options {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.sort-by-state,
+.sort-by-designation {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+  position: relative;
+}
+
+.dropdown-menu-state,
+.dropdown-menu-des {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(120px, 1fr));
+  gap: 5px;
+}
+
+.dropdown-menu-state label,
+.dropdown-menu-des label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.dropdown-menu-state input,
+.dropdown-menu-des input {
+  margin-right: 5px;
+}
+
+.dropdown-toggle-state,
+.dropdown-toggle-des {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media screen and (max-width: 1100px) and (min-width: 601px) {
   .checkbox-list li {
-    background-color: white; 
-    border-radius: 5px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 10px;
     margin: 5px;
     margin-bottom: 10px;
-    width: calc(95% / 3); 
+    width: calc(95% / 2);
     box-sizing: border-box;
   }
+}
 
-  .checkbox-list li input[type="checkbox"]:checked ~ label {
-    background-color: orange;
- }
-
-   input[type="checkbox"] {
-    margin-right: 5px;
-    cursor: pointer;
-  }
-  
-  .welcome-message {
-    margin-top: 10px;
-    margin-right: 100px;
-  }
-
-  h1, h2 {
-    text-align: center;
-  }
-
-  .below-header-box{
-    display:flex;
-    justify-content: center;
-  }
-
-  .state-selector {
-    display: flex;
-    align-items: center;
+@media screen and (max-width: 600px) {
+  .checkbox-list li {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin: 5px;
     margin-bottom: 10px;
+    width: calc(95% / 1);
+    box-sizing: border-box;
   }
-  
-  .state-selector select {
-    padding: 5px;
-    margin-right: 5px;
-  }
-  
-  .state-selector button {
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .pagination button {
-    background: none;
-    border: none;
-    font-size: 18px;
-    font-weight: bold;
-    color: black;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  
-  .pagination button:hover {
-    color: orange;
-  }
-
-  .page-title{
-    position: relative;
-    margin-top: 0; 
-  }
-
-  .park-checklist-container {
-    position: relative;
-    min-height: 100vh; 
-    background-size: cover;
-    padding-top: 50px; 
-  }
-  
-  .loading-message {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 24px;
-    color: #333;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
-    z-index: 999;
-  }
-  
-  .header-link {
-    text-decoration: none; 
-    color: inherit; 
-    cursor: pointer; 
-  }
-
-  .below-header-box {
-    margin-bottom: 20px;
-   }
-   
-   .sorting-options {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-   }
-   
-   .sort-by-state,
-   .sort-by-designation {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
-    position: relative;
-   }
-   
-   .dropdown-menu-state,
-   .dropdown-menu-des {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(120px, 1fr));
-    gap: 5px;
-   }
-   
-   .dropdown-menu-state label,
-   .dropdown-menu-des label {
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
-   }
-   
-   .dropdown-menu-state input,
-   .dropdown-menu-des input {
-    margin-right: 5px;
-   }
-   
-   .dropdown-toggle-state,
-   .dropdown-toggle-des {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-   }
-   
-  @media screen and (max-width: 1100px) and (min-width: 601px){
-    .checkbox-list li {
-        background-color: white; 
-        border-radius: 5px; 
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        padding: 10px; 
-        margin: 5px;
-        margin-bottom: 10px;
-        width: calc(95% / 2); 
-        box-sizing: border-box;
-      }
-  }
-
-  @media screen and (max-width: 600px) {
-    .checkbox-list li {
-        background-color: white;
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        padding: 10px; 
-        margin: 5px;
-        margin-bottom: 10px;
-        width: calc(95% / 1); 
-        box-sizing: border-box;
-      }
-  }
+}
