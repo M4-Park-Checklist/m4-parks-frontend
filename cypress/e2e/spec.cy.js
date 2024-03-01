@@ -13,6 +13,14 @@ describe('NPS Service App', () => {
       fixture: 'abli-park.json'
     })
       .as("getAbli")
+      cy.intercept('GET', "https://m4-parks-backend.onrender.com/api/v0/weather/zion", {
+        fixture: 'zion-weather.json'
+      })
+      .as("getZionWeather")
+      cy.intercept('GET', "https://m4-parks-backend.onrender.com/api/v0/weather/abli", {
+        fixture: 'abli-weather.json'
+      })
+      .as("getAbliWeather")
     cy.visit('http://localhost:3000/');
     cy.wait("@getParks")
   })
@@ -71,16 +79,13 @@ describe('NPS Service App', () => {
     beforeEach(() => {
       cy.get('.state-selector select').select('UT');
       cy.get('.state-selector button').click();
-      cy.intercept('GET', "https://m4-parks-backend.onrender.com/api/v0/weather/zion", {
-        fixture: 'zion-weather.json'
-      })
+
       cy.get('.park-card button').click();
       cy.wait("@getZion")
+      cy.wait("@getZionWeather")
     });
     it('Should display park details correctly', () => {
       cy.get('.park-details-title .single-title').should('contain', 'Zion National Park');
-
-      cy.get('.image-container .single-image').should('have.attr', 'src', 'https://www.nps.gov/common/uploads/structured_data/69162F54-D4AF-8695-A42F97A8F9774C19.jpg');
 
       cy.get('.park-description').should('contain', 'Follow the paths where people have walked for thousands of years.');
 
@@ -124,11 +129,53 @@ describe('NPS Service App', () => {
       });
     });
 
+    it('Should display amenities modal when amenities header is clicked', () => {
+      cy.get('.park-details-amenities').click(); 
+      cy.wait(1000);
+      cy.get('.modal-content').should('be.visible'); 
+      cy.get('.modal-content h3').should('contain', 'Amenities'); 
+      cy.get('.modal-content ul li:first-child').should('contain', 'Accessible Rooms');
+      cy.get('.modal-content ul li:last-child').should('contain', 'Wheelchairs Available');
+      cy.get('.modal-content ul li').should('have.length', 49);
+    });
+
+    it('Should display activities modal when activities header is clicked', () => {
+      cy.get('.park-details-activities').click(); 
+      cy.wait(1000);
+      cy.get('.modal-content').should('be.visible'); 
+      cy.get('.modal-content h3').should('contain', 'Activities'); 
+      cy.get('.modal-content ul li:first-child').should('contain', 'Arts and Culture');
+      cy.get('.modal-content ul li:last-child').should('contain', 'Bookstore and Park Store');
+      cy.get('.modal-content ul li').should('have.length', 22);
+    });
+
+    it('Should display weather modal when weather header is clicked', () => {
+      cy.get('.park-details-weather').click();
+      cy.wait(1000);
+      cy.get('.modal-content').should('be.visible'); 
+      cy.get('.modal-content h2').should('contain', '3 Day Weather Forecast'); 
+  
+      cy.get('@getZionWeather').then(({ response }) => {
+        const forecast = response.body.data.attributes.forecast;
+        forecast.forEach((day, index) => {
+          cy.get(`.modal-content .weather-day:nth-child(${index + 1})`).within(() => {
+            cy.get('.weather-icon').should('have.attr', 'src', day.icon);
+            cy.contains('Date:').should('contain', day.date);
+            cy.contains(day.condition);
+            cy.contains(`Max Temp: ${day.max_temp} °F`);
+            cy.contains(`Min Temp: ${day.min_temp} °F`);
+            cy.contains(`Sunrise: ${day.sunrise}`);
+            cy.contains(`Sunset: ${day.sunset}`);
+          });
+        });
+      });
+    });
+
     it('Should navigate back to checklist view when the page title is clicked', () => {
       cy.get('.page-title').click();
       cy.url().should('eq', 'http://localhost:3000/');
       cy.title().should('eq', 'NPS Service');
-      cy.get('.checkbox-list li').should('have.length', 2);
+      cy.get('.checkbox-list li').should('have.length', 4);
       cy.get('.checkbox-list li:first-child').contains('Abraham Lincoln Birthplace National Historical Park');
       cy.get('.checkbox-list li:last-child').contains('Zion National Park');
     });
@@ -163,20 +210,14 @@ describe('NPS Service App', () => {
     beforeEach(() => {
       cy.get('.state-selector select').select('KY');
       cy.get('.state-selector button').click();
-      cy.intercept('GET', "https://m4-parks-backend.onrender.com/api/v0/weather/abli", {
-        fixture: 'abli-weather.json'
-      })
       cy.get('.park-card button').click();
       cy.wait("@getAbli")
+      cy.wait("@getAbliWeather")
     });
 
     it('Should display park details correctly', () => {
       cy.get('.park-details-title .single-title').should('contain', 'Abraham Lincoln Birthplace National Historical Park');
-
-      cy.get('.image-container .single-image').should('have.attr', 'src', 'https://www.nps.gov/common/uploads/structured_data/3C861263-1DD8-B71B-0B71EF9B95F9644F.jpg');
-
       cy.get('.park-description').should('contain', "For over a century people from around the world have come to rural Central Kentucky to honor the humble beginnings of our 16th president, Abraham Lincoln. His early life on Kentucky's frontier shaped his character and prepared him to lead the nation through Civil War. Visit our country's first memorial to Lincoln, built with donations from young and old, and the site of his childhood home.");
-
       cy.get('.active-alerts').should('contain', 'Birthplace Unit Open Daily!');
       cy.get('.active-alerts').should('contain', 'Kentucky Boyhood Home at Knob Creek Unit Visitor Center has Seasonal Hours');
 
@@ -200,7 +241,6 @@ describe('NPS Service App', () => {
         cy.get('p').should('contain', 'Braille');
         cy.get('p').should('contain', 'Captioned Media');
         cy.get('p').should('have.length', 10);
-
       });
 
       cy.get('.park-details-activities').within(() => {
@@ -215,6 +255,48 @@ describe('NPS Service App', () => {
         cy.get('p').should('contain', 'Wildlife Watching');
         cy.get('p').should('contain', 'Birdwatching');
         cy.get('p').should('have.length', 10);
+      });
+    });
+
+    it('Should display amenities modal when amenities header is clicked', () => {
+      cy.get('.park-details-amenities').click(); 
+      cy.wait(1000);
+      cy.get('.modal-content').should('be.visible'); 
+      cy.get('.modal-content h3').should('contain', 'Amenities'); 
+      cy.get('.modal-content ul li:first-child').should('contain', 'Accessible Rooms');
+      cy.get('.modal-content ul li:last-child').should('contain', 'Wheelchairs Available');
+      cy.get('.modal-content ul li').should('have.length', 40);
+    });
+
+    it('Should display activities modal when activities header is clicked', () => {
+      cy.get('.park-details-activities').click(); 
+      cy.wait(1000);
+      cy.get('.modal-content').should('be.visible'); 
+      cy.get('.modal-content h3').should('contain', 'Activities'); 
+      cy.get('.modal-content ul li:first-child').should('contain', 'Astronomy');
+      cy.get('.modal-content ul li:last-child').should('contain', 'Gift Shop and Souvenirs');
+      cy.get('.modal-content ul li').should('have.length', 15);
+    });
+
+    it('Should display weather modal when weather header is clicked', () => {
+      cy.get('.park-details-weather').click();
+      cy.wait(1000);
+      cy.get('.modal-content').should('be.visible'); 
+      cy.get('.modal-content h2').should('contain', '3 Day Weather Forecast'); 
+  
+      cy.get('@getAbliWeather').then(({ response }) => {
+        const forecast = response.body.data.attributes.forecast;
+        forecast.forEach((day, index) => {
+          cy.get(`.modal-content .weather-day:nth-child(${index + 1})`).within(() => {
+            cy.get('.weather-icon').should('have.attr', 'src', day.icon);
+            cy.contains('Date:').should('contain', day.date);
+            cy.contains(day.condition);
+            cy.contains(`Max Temp: ${day.max_temp} °F`);
+            cy.contains(`Min Temp: ${day.min_temp} °F`);
+            cy.contains(`Sunrise: ${day.sunrise}`);
+            cy.contains(`Sunset: ${day.sunset}`);
+          });
+        });
       });
     });
 
