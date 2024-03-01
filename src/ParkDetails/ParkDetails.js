@@ -150,5 +150,5 @@ ParkDetails.propTypes = {
     }).isRequired,
     id: PropTypes.string,
     type: PropTypes.string.isRequired
-  }).isRequired
+  })
 };

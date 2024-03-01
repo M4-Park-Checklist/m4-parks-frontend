@@ -1,0 +1,38 @@
+{
+  "data": {
+  "id": null,
+  "type": "weather",
+  "attributes": {
+  "id": null,
+  "forecast": [
+  {
+  "date": "2024-03-01",
+  "sunrise": "07:14 AM",
+  "sunset": "06:37 PM",
+  "max_temp": 40.6,
+  "min_temp": 31.3,
+  "condition": "Moderate rain",
+  "icon": "//cdn.weatherapi.com/weather/64x64/day/302.png"
+  },
+  {
+  "date": "2024-03-02",
+  "sunrise": "07:12 AM",
+  "sunset": "06:38 PM",
+  "max_temp": 54.8,
+  "min_temp": 41.6,
+  "condition": "Patchy rain nearby",
+  "icon": "//cdn.weatherapi.com/weather/64x64/day/176.png"
+  },
+  {
+  "date": "2024-03-03",
+  "sunrise": "07:11 AM",
+  "sunset": "06:39 PM",
+  "max_temp": 67.6,
+  "min_temp": 44.3,
+  "condition": "Mist",
+  "icon": "//cdn.weatherapi.com/weather/64x64/day/143.png"
+  }
+  ]
+  }
+  }
+  }

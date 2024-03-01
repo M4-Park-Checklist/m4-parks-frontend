@@ -14,7 +14,7 @@ export default function Login({loggedIn, setLoggedIn}) {
 
   const sendUser = async (user) => {
     try {
-      const response = await axios.get();    //send login info to backend for verification (backend endpoint not complete at time of submission)
+      // const response = await axios.get();    //send login info to backend for verification (backend endpoint not complete at time of submission)
       setLoggedIn(true)
     } catch (error) {
       console.error("Error: incorrect login", error);
