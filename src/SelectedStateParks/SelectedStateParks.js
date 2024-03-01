@@ -5,13 +5,12 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./SelectedStateParks.css";
 
-function SelectedStateParks({ apiLink, parks, selectedState, setFoundPark, setParkCode, weatherLink,  setWeather }) {
+function SelectedStateParks({ apiLink, parks, selectedState, setFoundPark, setParkCode, weatherLink, setWeather }) {
   const navigate = useNavigate();
   const fetchParkDetails = async (park_code) => {
     try {
       const response = await axios.get(`${apiLink}/${park_code}`);
       const selectedPark = response.data.data;
-
       const weatherResponse = await axios.get(`${weatherLink.replace(':id', park_code)}`);
       const weatherData = weatherResponse.data.data;
       
@@ -66,6 +65,7 @@ function SelectedStateParks({ apiLink, parks, selectedState, setFoundPark, setPa
 export default SelectedStateParks;
 
 SelectedStateParks.propTypes = {
+  apiLink: PropTypes.string.isRequired,
   parks: PropTypes.arrayOf(
     PropTypes.shape({
       attributes: PropTypes.shape({
@@ -82,4 +82,8 @@ SelectedStateParks.propTypes = {
     })
   ).isRequired,
   selectedState: PropTypes.string.isRequired,
+  setFoundPark: PropTypes.func.isRequired,
+  setParkCode: PropTypes.func.isRequired,
+  weatherLink: PropTypes.string.isRequired,
+  setWeather: PropTypes.func.isRequired
 };

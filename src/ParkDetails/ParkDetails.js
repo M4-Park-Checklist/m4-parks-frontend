@@ -7,7 +7,7 @@ import WeatherModal from "../WeatherModal/WeatherModal";
 
 function ParkDetails({ foundPark, weather }) {
   const [showModal, setShowModal] = useState(null);
-console.log(weather)
+  
   const toggleModal = (modalType) => {
     setShowModal(showModal === modalType ? null : modalType);
   };
@@ -143,4 +143,12 @@ ParkDetails.propTypes = {
       }).isRequired,
     }).isRequired,
   }),
+  weather: PropTypes.shape({
+    attributes: PropTypes.shape({
+      id: PropTypes.string,
+      forecast: PropTypes.array.isRequired
+    }).isRequired,
+    id: PropTypes.string,
+    type: PropTypes.string.isRequired
+  }).isRequired
 };

@@ -8,7 +8,6 @@ import DesignationSort from "../Modal/DesignationSort";
 import CustomButton from "../ButtonRule";
 
 const ParkChecklist = ({ parks, setParks, apiLink, selectedState, setSelectedState, showResults, setShowResults, loading, setLoading }) => {
-
   const [checkedItems, setCheckedItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedStateParks, setSelectedStateParks] = useState([]);
@@ -102,7 +101,8 @@ const ParkChecklist = ({ parks, setParks, apiLink, selectedState, setSelectedSta
         <section>
           <div className="below-header-box">
             <div className="state-selector">
-              <select onChange={handleStateChange} value={selectedState}>
+            <label htmlFor="stateSelector">Select a State:</label>
+              <select id="stateSelector" onChange={handleStateChange} value={selectedState}>
                 <option value="">Select a State</option>
                 {states.map((stateCode) => (
                   <option key={stateCode} value={stateCode}>
@@ -223,7 +223,8 @@ const ParkChecklist = ({ parks, setParks, apiLink, selectedState, setSelectedSta
                 {">>"}
               </CustomButton>
             )}
-          </div></section>)}
+          </div>
+        </section>)}
     </div>
   );
 };
@@ -231,6 +232,33 @@ const ParkChecklist = ({ parks, setParks, apiLink, selectedState, setSelectedSta
 export default ParkChecklist;
 
 ParkChecklist.propTypes = {
+  parks: PropTypes.arrayOf(PropTypes.shape({
+    attributes: PropTypes.shape({
+      active_alerts: PropTypes.array,
+      amenities: PropTypes.array,
+      current_weather: PropTypes.array,
+      description: PropTypes.string.isRequired,
+      designation: PropTypes.string.isRequired,
+      hours_of_operation: PropTypes.string,
+      id: PropTypes.string.isRequired,
+      media: PropTypes.arrayOf(PropTypes.shape({
+        url: PropTypes.string.isRequired,
+        altText: PropTypes.string.isRequired,
+      }).isRequired),
+      name: PropTypes.string.isRequired,
+      park_code: PropTypes.string.isRequired,
+      states: PropTypes.string.isRequired,
+      things_to_do: PropTypes.array,
+    }),   
+    id: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+  })),
+  setParks: PropTypes.func.isRequired,
   apiLink: PropTypes.string.isRequired,
-  indivParkLink: PropTypes.string,
+  selectedState: PropTypes.string.isRequired,
+  setSelectedState: PropTypes.func.isRequired,
+  showResults: PropTypes.bool.isRequired,
+  setShowResults: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  setLoading: PropTypes.func.isRequired
 };

@@ -4,7 +4,7 @@ NPS Service is an app designed to let you view all of the national parks in the 
 ## 💻 Installation instructions
 1. Open project on Github
 2. Clone down the repo
-3. cd into the repo and run `npm install`, `npm i @material-tailwind/react`,
+3. cd into the repo and run `npm install`
 4. Run npm start
 5. When the window opens, you should have access to a checklist of parks 
 6. You should be able to check off parks and see your `parks visited` increase
@@ -41,7 +41,7 @@ This app was the first time we worked with a Backend Team to cultivate a server 
 
 ### Unstructured project expectations: 
 
-## 🎆 Wins && 🔥 Challenges#
+## 🎆 Wins && 🔥 Challenges
 ### Wins:
 Lex - This is a celebration of everything I have learned so far! I got to work with a backend team and learn more about what it takes to be a full stack dev.
 
@@ -110,12 +110,14 @@ Lex - This is a celebration of everything I have learned so far! I got to work w
 
 Joey - Getting the sort function to work was a massive win. I wanted it to be dynamic enough so that you could search for any park with any of the filter conditions provided. It turned out to be tougher of a task than I thought but the functionality of it turned out really nice.
 
-Arden - Wins would be finding useful libraries and documentation resources for our stretch, having strong collaboration within the frontend group, and integrating Tailwind quickly
+Arden - Wins would be finding useful libraries and documentation resources for our stretch, having strong collaboration within the frontend group, and integrating Tailwind quickly.
 
 ### Challenges: 
-Lex - pivoting from flutter and tailwind to just tailwind was disappointing but a needed step. I also felt greatly challenged by the weather modal because it had different rule than I had used before.
+Lex - pivoting from Flutter and Tailwind to just Tailwind was disappointing but a needed step. I also felt greatly challenged by the weather modal because it had different rules than I had used before.
 
-Joey - Having to pivot from Flutter to just Tailwind. We found out that it is possible to use Flutter inconjunction with React, but you have to go through less than professional means to get it working together. We decided to scrap that idea, since it would have needed an entire new app for it to work and with pressing time, we decided all to get up to speed and learn Tailwind and participate it it's implementation.
+Joey - Having to pivot from Flutter to just Tailwind. We found out that it is possible to use Flutter in conjunction with React, but you have to go through less than professional means to get it working together. We decided to scrap that idea, since it would have needed an entire new app for it to work and with pressing time, we decided all to get up to speed and learn Tailwind and participate it it's implementation.
+
+Arden - Doing research into Flutter that didn't end up getting used, balancing professional development time, and communicating wants and needs to the backend team.
 
 ## 📝 Observations  
 Lex - Tailwind styling is extremely different compared to regular css styling, building rulesets in your actual xml was something I was not used to. I had to do a lot of learning to get tailwind working.

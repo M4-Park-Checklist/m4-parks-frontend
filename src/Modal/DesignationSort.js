@@ -1,11 +1,11 @@
 import React, {useState} from "react";
+import PropTypes from "prop-types";
 
 const DesignationSort = ({ getUniqueDesignations, selectedDesignations, handleDesignationCheckboxChange }) => {
-    const [dropdownDesignationOpen, setDropdownDesignationOpen] = useState(false);
-
-    const toggleDropdownDesignation = () => {
-        setDropdownDesignationOpen(!dropdownDesignationOpen);
-      };
+  const [dropdownDesignationOpen, setDropdownDesignationOpen] = useState(false);
+  const toggleDropdownDesignation = () => {
+    setDropdownDesignationOpen(!dropdownDesignationOpen);
+  };
 
   return (
     <div className="sort-by-designation">
@@ -29,5 +29,11 @@ const DesignationSort = ({ getUniqueDesignations, selectedDesignations, handleDe
     </div>
   );
 };
+
+DesignationSort.propTypes = {
+  getUniqueDesignations: PropTypes.func.isRequired,
+  selectedDesignations: PropTypes.array.isRequired,
+  handleDesignationCheckboxChange: PropTypes.func.isRequired,
+}
 
 export default DesignationSort;
