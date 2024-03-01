@@ -13,12 +13,14 @@ import "./App.css"
 
 const App = () => {
   const apiLink = "https://m4-parks-backend.onrender.com/api/v0/parks/";
+  const weatherLink = "https://m4-parks-backend.onrender.com/api/v0/weather/:id"
   const location = useLocation();
   const [loading, setLoading] = useState(true);
   const [showResults, setShowResults] = useState(false);
   const [selectedState, setSelectedState] = useState("");
   const [loggedIn, setLoggedIn] = useState(true);
   const [foundPark, setFoundPark] = useState(null);
+  const [weather, setWeather] = useState(null);
   const [parks, setParks] = useState([]);
   const [park_code, setParkCode] = useState(null);
 
@@ -68,10 +70,12 @@ const App = () => {
             selectedState={selectedState}
             apiLink={apiLink}
             setFoundPark={setFoundPark}
+            setWeather={setWeather}
             setParkCode={setParkCode}
+            weatherLink={weatherLink}
           />} 
         />
-        <Route path='/Parks/:selectedState/:park_code' element={selectedState ? <ParkDetails foundPark={foundPark} /> : null} />
+        <Route path='/Parks/:selectedState/:park_code' element={selectedState ? <ParkDetails foundPark={foundPark} weather={weather} /> : null} />
         <Route path='*' element={<ErrorPage />} />
       </Routes>
       </CSSTransition>
