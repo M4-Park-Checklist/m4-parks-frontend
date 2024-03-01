@@ -227,8 +227,21 @@ describe('NPS Service App', () => {
       cy.get('.checkbox-list li:first-child').contains('Abraham Lincoln Birthplace National Historical Park');
       cy.get('.checkbox-list li:last-child').contains('Zion National Park');
     });
-  });
 
+    it('Should sort the checklist page with state and desingation filters', () => {
+      cy.get('h1.page-title').click();
+      cy.contains('button.text-white', 'State Sort').click();
+      cy.get('.sort-by-state').should('be.visible');
+      cy.get('.sort-by-state').find('input[type="checkbox"]').eq(1).check();
+      cy.get('.modal-overlay').click();
+      cy.contains('button.text-white', 'Designation Sort').click();
+      cy.get('.sort-by-designation').find('input[type="checkbox"]').eq(1).check();
+      cy.get('.modal-close-button').click();
+      cy.get('.checkbox-list li:first-child').contains('Kenai Fjords National Park');
+      cy.get('.checkbox-list li:last-child').contains('Kobuk Valley National Park');
+    });
+  });
+  
   context('Bad URL testing', () => {
     it('Should take you back to the main page when you put a bad URL in', () => {
       cy.visit('http://localhost:3000/asgafgdfg');
