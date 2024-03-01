@@ -14,6 +14,8 @@ const ParkChecklist = ({ parks, setParks, apiLink, selectedState, setSelectedSta
   const [selectedStateParks, setSelectedStateParks] = useState([]);
   const [selectedDesignations, setSelectedDesignations] = useState([]);
   const [selectedFilters, setSelectedFilters] = useState({ parks: [], designations: [] });
+  const [showStateModal, setShowStateModal] = useState(false); // State for StateSort modal
+  const [showDesignationModal, setShowDesignationModal] = useState(false); // State for DesignationSort modal
   const navigate = useNavigate();
   const parksPerPage = 48;
   const states = [
@@ -60,7 +62,7 @@ const ParkChecklist = ({ parks, setParks, apiLink, selectedState, setSelectedSta
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
-  };  
+  };
 
   const handleStateCheckboxChange = (stateCode) => {
     const parksInState = parks.filter(park => park.attributes.states === stateCode);
@@ -98,116 +100,130 @@ const ParkChecklist = ({ parks, setParks, apiLink, selectedState, setSelectedSta
     <div className="park-checklist-container">
       {loading ? <p className="loading-message">Loading Parks...</p> : (
         <section>
-      <div className="below-header-box">
-        <div className="state-selector">
-          <select onChange={handleStateChange} value={selectedState}>
-            <option value="">Select a State</option>
-            {states.map((stateCode) => (
-              <option key={stateCode} value={stateCode}>
-                {stateCode}
-              </option>
-            ))}
-          </select>
-          <CustomButton onClick={handleGoClick}>Go!</CustomButton>
-        </div>
-      </div>
-      <div className="sorting-options">
-        <div className="sort-by-state">
-          <StateSort
-            states={states}
-            selectedStateParks={selectedStateParks}
-            handleStateCheckboxChange={handleStateCheckboxChange}
-          />
-        </div>
-        <DesignationSort
-          getUniqueDesignations={getUniqueDesignations}
-          selectedDesignations={selectedDesignations}
-          handleDesignationCheckboxChange={handleDesignationCheckboxChange}
-        />
-      </div>
-      <h2>{`${totalChecked}/${parks.length} parks visited`}</h2>
-      <h2>Parks Checklist</h2>
-      <ul className="checkbox-list">
-        {selectedFilters.parks.length > 0 ? (
-          selectedFilters.parks
-            .filter(
-              (park) =>
-                selectedFilters.designations.length === 0 ||
-                selectedFilters.designations.some(
-                  (designation) =>
-                    park.attributes.designation === designation
+          <div className="below-header-box">
+            <div className="state-selector">
+              <select onChange={handleStateChange} value={selectedState}>
+                <option value="">Select a State</option>
+                {states.map((stateCode) => (
+                  <option key={stateCode} value={stateCode}>
+                    {stateCode}
+                  </option>
+                ))}
+              </select>
+              <CustomButton onClick={handleGoClick}>Go!</CustomButton>
+            </div>
+            <div className="sort-buttons">
+              <CustomButton onClick={() => setShowStateModal(true)}>State Sort</CustomButton>
+              <CustomButton onClick={() => setShowDesignationModal(true)}>Designation Sort</CustomButton>
+            </div>
+          </div>
+          {showStateModal && (
+            <div className="modal-overlay" onClick={() => setShowStateModal(false)}>
+              <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                <button className="modal-close-button" onClick={() => setShowStateModal(false)}>X</button>
+                <StateSort
+                  states={states}
+                  selectedStateParks={selectedStateParks}
+                  handleStateCheckboxChange={handleStateCheckboxChange}
+                />
+              </div>
+            </div>
+          )}
+          {showDesignationModal && (
+            <div className="modal-overlay" onClick={() => setShowDesignationModal(false)}>
+              <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                <button className="modal-close-button" onClick={() => setShowDesignationModal(false)}>X</button>
+                <DesignationSort
+                  getUniqueDesignations={getUniqueDesignations}
+                  selectedDesignations={selectedDesignations}
+                  handleDesignationCheckboxChange={handleDesignationCheckboxChange}
+                />
+              </div>
+            </div>
+          )}
+          <h2>{`${totalChecked}/${parks.length} parks visited`}</h2>
+          <h2>Parks Checklist</h2>
+          <ul className="checkbox-list">
+            {selectedFilters.parks.length > 0 ? (
+              selectedFilters.parks
+                .filter(
+                  (park) =>
+                    selectedFilters.designations.length === 0 ||
+                    selectedFilters.designations.some(
+                      (designation) =>
+                        park.attributes.designation === designation
+                    )
                 )
-            )
-            .map((park) => (
-              <li key={park.id}>
-                <input
-                  type="checkbox"
-                  id={park.id}
-                  checked={checkedItems.includes(park.id)}
-                  onChange={() => handleCheckboxChange(park.id)}
-                />
-                <label htmlFor={park.id}>{park.attributes.name}</label>
-              </li>
-            ))
-        ) : selectedFilters.designations.length > 0 ? (
-          parks
-            .filter((park) =>
-              selectedFilters.designations.includes(
-                park.attributes.designation
-              )
-            )
-            .map((park) => (
-              <li key={park.id}>
-                <input
-                  type="checkbox"
-                  id={park.id}
-                  checked={checkedItems.includes(park.id)}
-                  onChange={() => handleCheckboxChange(park.id)}
-                />
-                <label htmlFor={park.id}>{park.attributes.name}</label>
-              </li>
-            ))
-        ) : (
-          currentParks.map((park) => (
-            <li key={park.id}>
-              <input
-                type="checkbox"
-                id={park.id}
-                checked={checkedItems.includes(park.id)}
-                onChange={() => handleCheckboxChange(park.id)}
-              />
-              <label htmlFor={park.id}>{park.attributes.name}</label>
-            </li>
-          ))
-        )}
-      </ul>
-      <div className="pagination">
-        {currentPage !== 1 && (
-          <CustomButton onClick={() => handlePageChange(1)}>{"<<"}</CustomButton>
-        )}
-        {currentPage > 1 && (
-          <CustomButton onClick={() => handlePageChange(currentPage - 1)}>
-            {"<"}
-          </CustomButton>
-        )}
-        <span>{`${currentPage}/${Math.ceil(
-          parks.length / parksPerPage
-        )}`}</span>
-        {currentPage < Math.ceil(parks.length / parksPerPage) && (
-          <CustomButton onClick={() => handlePageChange(currentPage + 1)}>
-            {">"}
-          </CustomButton>
-        )}
-        {currentPage !== Math.ceil(parks.length / parksPerPage) && (
-          <CustomButton
-            onClick={() =>
-              handlePageChange(Math.ceil(parks.length / parksPerPage))
-            }
-          >
-            {">>"}
-          </CustomButton>
-        )}
-      </div></section>)}
+                .map((park) => (
+                  <li key={park.id}>
+                    <input
+                      type="checkbox"
+                      id={park.id}
+                      checked={checkedItems.includes(park.id)}
+                      onChange={() => handleCheckboxChange(park.id)}
+                    />
+                    <label htmlFor={park.id}>{park.attributes.name}</label>
+                  </li>
+                ))
+            ) : selectedFilters.designations.length > 0 ? (
+              parks
+                .filter((park) =>
+                  selectedFilters.designations.includes(
+                    park.attributes.designation
+                  )
+                )
+                .map((park) => (
+                  <li key={park.id}>
+                    <input
+                      type="checkbox"
+                      id={park.id}
+                      checked={checkedItems.includes(park.id)}
+                      onChange={() => handleCheckboxChange(park.id)}
+                    />
+                    <label htmlFor={park.id}>{park.attributes.name}</label>
+                  </li>
+                ))
+            ) : (
+              currentParks.map((park) => (
+                <li key={park.id}>
+                  <input
+                    type="checkbox"
+                    id={park.id}
+                    checked={checkedItems.includes(park.id)}
+                    onChange={() => handleCheckboxChange(park.id)}
+                  />
+                  <label htmlFor={park.id}>{park.attributes.name}</label>
+                </li>
+              ))
+            )}
+          </ul>
+          <div className="pagination">
+            {currentPage !== 1 && (
+              <CustomButton onClick={() => handlePageChange(1)}>{"<<"}</CustomButton>
+            )}
+            {currentPage > 1 && (
+              <CustomButton onClick={() => handlePageChange(currentPage - 1)}>
+                {"<"}
+              </CustomButton>
+            )}
+            <span>{`${currentPage}/${Math.ceil(
+              parks.length / parksPerPage
+            )}`}</span>
+            {currentPage < Math.ceil(parks.length / parksPerPage) && (
+              <CustomButton onClick={() => handlePageChange(currentPage + 1)}>
+                {">"}
+              </CustomButton>
+            )}
+            {currentPage !== Math.ceil(parks.length / parksPerPage) && (
+              <CustomButton
+                onClick={() =>
+                  handlePageChange(Math.ceil(parks.length / parksPerPage))
+                }
+              >
+                {">>"}
+              </CustomButton>
+            )}
+          </div></section>)}
     </div>
   );
 };
