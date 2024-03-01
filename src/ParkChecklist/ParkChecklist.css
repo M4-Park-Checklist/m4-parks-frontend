@@ -189,4 +189,9 @@ h2 {
     width: calc(95% / 1);
     box-sizing: border-box;
   }
+  .state-selector {
+    display:flex;
+    flex-direction: column;
+    padding-left: 20px;
+  }
 }
