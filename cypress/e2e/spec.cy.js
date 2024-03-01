@@ -163,6 +163,9 @@ describe('NPS Service App', () => {
     beforeEach(() => {
       cy.get('.state-selector select').select('KY');
       cy.get('.state-selector button').click();
+      cy.intercept('GET', "https://m4-parks-backend.onrender.com/api/v0/weather/abli", {
+        fixture: 'abli-weather.json'
+      })
       cy.get('.park-card button').click();
       cy.wait("@getAbli")
     });

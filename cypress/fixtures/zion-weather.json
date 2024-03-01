@@ -1,38 +1,38 @@
 {
   "data": {
-    "id": null,
-    "type": "weather",
-    "attributes": {
-      "id": null,
-      "forecast": [
-        {
-          "date": "2024-03-01",
-          "sunrise": "07:02 AM",
-          "sunset": "06:26 PM",
-          "max_temp": 58.2,
-          "min_temp": 33,
-          "condition": "Sunny",
-          "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png"
-        },
-        {
-          "date": "2024-03-02",
-          "sunrise": "07:01 AM",
-          "sunset": "06:27 PM",
-          "max_temp": 50.3,
-          "min_temp": 34.1,
-          "condition": "Patchy rain nearby",
-          "icon": "//cdn.weatherapi.com/weather/64x64/day/176.png"
-        },
-        {
-          "date": "2024-03-03", 
-          "sunrise": "06:59 AM",
-          "sunset": "06:28 PM",
-          "max_temp": 40.1,
-          "min_temp": 28.7,
-          "condition": "Moderate rain",
-          "icon": "//cdn.weatherapi.com/weather/64x64/day/302.png"
-        }
-      ]
-    }
+  "id": null,
+  "type": "weather",
+  "attributes": {
+  "id": null,
+  "forecast": [
+  {
+  "date": "2024-03-01",
+  "sunrise": "07:02 AM",
+  "sunset": "06:26 PM",
+  "max_temp": 58.2,
+  "min_temp": 33,
+  "condition": "Sunny",
+  "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png"
+  },
+  {
+  "date": "2024-03-02",
+  "sunrise": "07:01 AM",
+  "sunset": "06:27 PM",
+  "max_temp": 50.3,
+  "min_temp": 34.1,
+  "condition": "Patchy rain nearby",
+  "icon": "//cdn.weatherapi.com/weather/64x64/day/176.png"
+  },
+  {
+  "date": "2024-03-03",
+  "sunrise": "06:59 AM",
+  "sunset": "06:28 PM",
+  "max_temp": 40.1,
+  "min_temp": 28.7,
+  "condition": "Moderate rain",
+  "icon": "//cdn.weatherapi.com/weather/64x64/day/302.png"
   }
-}
+  ]
+  }
+  }
+  }
