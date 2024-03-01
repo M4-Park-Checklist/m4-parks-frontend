@@ -106,7 +106,6 @@ describe('NPS Service App', () => {
         cy.get('p').should('contain', 'Benches/Seating');
         cy.get('p').should('contain', 'Bicycle - Rack');
         cy.get('p').should('have.length', 10);
-
       });
 
       cy.get('.park-details-activities').within(() => {
@@ -230,13 +229,30 @@ describe('NPS Service App', () => {
   });
 
   context('Bad URL testing', () => {
-    it('Should take you back to the main page when you put a bad URL in', () => {
+    it('Should take you to an error page when you enter a bad URL', () => {
       cy.visit('http://localhost:3000/asgafgdfg');
-      cy.wait(5000)
+      cy.wait(5000);
       cy.title().should('eq', 'NPS Service');
-      cy.get('.checkbox-list li').should('have.length', 2);
-      cy.get('.checkbox-list li:first-child').contains('Abraham Lincoln Birthplace National Historical Park');
-      cy.get('.checkbox-list li:last-child').contains('Zion National Park');
+      cy.get('.nav-header').should('be.visible');
+      cy.get('.error-display').should('be.visible');
+      cy.get('h2').contains('Please stay on the marked trails.');
+      cy.get('p').contains('Follow leave no trace guidelines and return to the visitor\'s center.');
+      cy.intercept('GET', "https://m4-parks-backend.onrender.com/api/v0/parks/", {
+      fixture: 'parks.json'
+    })
+      .as("getParks")
+    cy.intercept('GET', "https://m4-parks-backend.onrender.com/api/v0/parks/zion", {
+      fixture: 'zion-park.json'
+    })
+      .as("getZion")
+    cy.intercept('GET', "https://m4-parks-backend.onrender.com/api/v0/parks/abli", {
+      fixture: 'abli-park.json'
+    })
+      .as("getAbli")
+      cy.get('button').contains('Understood').click();
+      cy.url().should('eq', 'http://localhost:3000/');
+      cy.get('.nav-header').should('be.visible');
+      cy.get('.checkbox-list').should('be.visible');
     });
-  })
-})
+  });
+});
