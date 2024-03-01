@@ -91,18 +91,23 @@ Joey -  It was our first time working with a backend team, we needed to discuss 
 - user wants a wishlist or a planning to visit type of page
 
 
-## Part 2
+# Part 2
 
 ## 🖇️ Learning Goals
 ### Backend Integration: 
+Start thinking beyond MVP and consider how to account for performance, feature improvement, and usability. Backup API access in case our primary server takes too long to respond.
 
-### Sprint Based development:
+### Sprint-based Development:
+Use an agile process to turn well-defined requirements into deployed and production ready software in a short time constraint.
 
-### New Team Dyanmics with Backend Team:
+### New Team Dynamics with Backend Team:
+Gain experience dividing applications into components and domains of responsibilities to facilitate multi-developer teams.
 
 ### Error Handling: 
+Early and consistent deployment to production, including continuous integration. Direction of users to handle user errors. 
 
 ### Tailwind: 
+Explore and implement new concepts, patterns, or libraries that have not been explicitly taught while at Turing.
 
 ## 🎆 Wins && 🔥 Challenges#
 ### Wins:
@@ -110,21 +115,21 @@ Lex - This is a celebration of everything I have learned so far! I got to work w
 
 Joey - Getting the sort function to work was a massive win. I wanted it to be dynamic enough so that you could search for any park with any of the filter conditions provided. It turned out to be tougher of a task than I thought but the functionality of it turned out really nice.
 
-Arden - Wins would be finding useful libraries and documentation resources for our stretch, having strong collaboration within the frontend group, and integrating Tailwind quickly.
+Arden - Wins for me would be finding useful libraries and documentation resources for our stretch, having strong collaboration within the frontend group, and integrating Tailwind quickly.
 
 ### Challenges: 
-Lex - pivoting from Flutter and Tailwind to just Tailwind was disappointing but a needed step. I also felt greatly challenged by the weather modal because it had different rules than I had used before.
+Lex - Pivoting from Flutter and Tailwind to just Tailwind was disappointing but a needed step. I also felt greatly challenged by the weather modal because it had different rules than I had used before.
 
 Joey - Having to pivot from Flutter to just Tailwind. We found out that it is possible to use Flutter in conjunction with React, but you have to go through less than professional means to get it working together. We decided to scrap that idea, since it would have needed an entire new app for it to work and with pressing time, we decided all to get up to speed and learn Tailwind and participate it it's implementation.
 
 Arden - Doing research into Flutter that didn't end up getting used, balancing professional development time, and communicating wants and needs to the backend team.
 
 ## 📝 Observations  
-Lex - Tailwind styling is extremely different compared to regular css styling, building rulesets in your actual xml was something I was not used to. I had to do a lot of learning to get tailwind working.
+Lex - Tailwind styling is extremely different compared to regular CSS styling, building rulesets in the XML was something I was not used to. I had to do a lot of learning to get Tailwind working.
 
-Joey -  Flutter looks like an incredible piece of technology that I wish we had the opportunity to use. The rules for Tailwind are a bit harder to make work with our previous css styling. With time, we got better and better, but previously easy tasks became much more tedious. Either way the results were better and I hope to use it more in the future.
+Joey -  Flutter looks like an incredible piece of technology that I wish we had the opportunity to use. The rules for Tailwind are a bit harder to make work with our previous css styling. With time, we got better and better, but previously easy tasks became much more tedious. Either way, the results were better and I hope to use it more in the future.
 
-Arden - Tailwind is extremely versatile, refactoring is to be embraced, not feared, and that pivoting focus and direction when necessary can be valuable
+Arden - Tailwind is extremely versatile, refactoring is to be embraced, not feared, and pivoting focus and direction when necessary can be valuable.
 
 
 
