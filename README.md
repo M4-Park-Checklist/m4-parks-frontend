@@ -109,7 +109,7 @@ Early and consistent deployment to production, including continuous integration.
 ### Tailwind: 
 Explore and implement new concepts, patterns, or libraries that have not been explicitly taught while at Turing.
 
-## 🎆 Wins && 🔥 Challenges#
+## 🎆 Wins && 🔥 Challenges
 ### Wins:
 Lex - This is a celebration of everything I have learned so far! I got to work with a backend team and learn more about what it takes to be a full stack dev.
 
