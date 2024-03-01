@@ -1,6 +1,6 @@
 import "./Login.css";
 import React, { useState } from "react";
-import { useRoutes, useNavigate, Link, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import PropTypes from "prop-types";
 import CustomButton from "../ButtonRule";
@@ -14,15 +14,13 @@ export default function Login({loggedIn, setLoggedIn}) {
 
   const sendUser = async (user) => {
     try {
-      const response = await axios.get();
+      const response = await axios.get();    //send login info to backend for verification (backend endpoint not complete at time of submission)
       setLoggedIn(true)
     } catch (error) {
       console.error("Error: incorrect login", error);
       alert("Incorrect credentials, please try again.");
     }
-    //send login info to backend for verification
     if(loggedIn) {
-      //if login info comes back with a positive verification
       navigate(`/`);
     }
   };

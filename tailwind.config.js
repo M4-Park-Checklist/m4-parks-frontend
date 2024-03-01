@@ -10,5 +10,3 @@ module.exports = withMT({
   },
   plugins: [],
 });
-
-className="h-12 min-w-[8rem] rounded-lg border-2 border-emerald-600 bg-emerald-500 text-emerald-50 shadow-lg hover:bg-emerald-600 focus:outline-none focus:ring focus:ring-emerald-600"

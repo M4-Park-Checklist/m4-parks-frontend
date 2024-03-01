@@ -43,42 +43,42 @@ const App = () => {
     <div className='App'>
       <Navigation loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
       <TransitionGroup>
-      <CSSTransition key={location.key} classNames="page" timeout={5000}>
-      <Routes location={location}>
-        <Route path='/' element={
-          <ParkChecklist 
-            apiLink={apiLink}
-            parks={parks}
-            setParks={setParks}
-            selectedState={selectedState} 
-            setSelectedState={setSelectedState} 
-            showResults={showResults}
-            setShowResults={setShowResults} 
-            loading={loading}
-            setLoading={setLoading}
-          />
-        } />
-        <Route path='/login' element={
-          <Login 
-            loggedIn={loggedIn} 
-            setLoggedIn={setLoggedIn} 
-          />
-        } />
-        <Route path='/Parks/:selectedState' element={
-          <SelectedStateParks
-            parks={parks}
-            selectedState={selectedState}
-            apiLink={apiLink}
-            setFoundPark={setFoundPark}
-            setWeather={setWeather}
-            setParkCode={setParkCode}
-            weatherLink={weatherLink}
-          />} 
-        />
-        <Route path='/Parks/:selectedState/:park_code' element={selectedState ? <ParkDetails foundPark={foundPark} weather={weather} /> : null} />
-        <Route path='*' element={<ErrorPage />} />
-      </Routes>
-      </CSSTransition>
+        <CSSTransition key={location.key} classNames="page" timeout={5000}>
+          <Routes location={location}>
+            <Route path='/' element={
+              <ParkChecklist 
+                apiLink={apiLink}
+                parks={parks}
+                setParks={setParks}
+                selectedState={selectedState} 
+                setSelectedState={setSelectedState} 
+                showResults={showResults}
+                setShowResults={setShowResults} 
+                loading={loading}
+                setLoading={setLoading}
+              />
+            } />
+            <Route path='/login' element={
+              <Login 
+                loggedIn={loggedIn} 
+                setLoggedIn={setLoggedIn} 
+              />
+            } />
+            <Route path='/Parks/:selectedState' element={
+              <SelectedStateParks
+                parks={parks}
+                selectedState={selectedState}
+                apiLink={apiLink}
+                setFoundPark={setFoundPark}
+                setWeather={setWeather}
+                setParkCode={setParkCode}
+                weatherLink={weatherLink}
+              />} 
+            />
+            <Route path='/Parks/:selectedState/:park_code' element={selectedState ? <ParkDetails foundPark={foundPark} weather={weather} /> : null} />
+            <Route path='*' element={<ErrorPage />} />
+          </Routes>
+        </CSSTransition>
       </TransitionGroup>
     </div>
   );

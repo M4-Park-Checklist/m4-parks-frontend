@@ -1,15 +1,11 @@
 import React, {useState} from "react";
+import PropTypes from "prop-types";
 
 const StateSort = ({ states, selectedStateParks, handleStateCheckboxChange }) => {
   const [dropdownStateOpen, setDropdownStateOpen] = useState(false);
-  const [dropdownDesignationOpen, setDropdownDesignationOpen] = useState(false);
-
-
   const toggleDropdownState = () => {
     setDropdownStateOpen(!dropdownStateOpen);
   };
-
-  
 
   return (
     <div className="sort-by-state">
@@ -33,5 +29,11 @@ const StateSort = ({ states, selectedStateParks, handleStateCheckboxChange }) =>
     </div>
   );
 };
+
+StateSort.propTypes = {
+  states: PropTypes.arrayOf(PropTypes.shape("")),
+  selectedStateParks: PropTypes.array.isRequired,
+  handleStateCheckboxChange: PropTypes.func.isRequired
+}
 
 export default StateSort;
