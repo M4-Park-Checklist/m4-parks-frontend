@@ -100,9 +100,9 @@ const ParkChecklist = ({ parks, setParks, apiLink, selectedState, setSelectedSta
       {loading ? <p className="loading-message">Loading Parks...</p> : (
         <section>
           <div className="below-header-box">
-            <label htmlFor="state-selector">Select a State:</label>
             <div className="state-selector">
-              <select onChange={handleStateChange} value={selectedState}>
+            <label htmlFor="stateSelector">Select a State:</label>
+              <select id="stateSelector" onChange={handleStateChange} value={selectedState}>
                 <option value="">Select a State</option>
                 {states.map((stateCode) => (
                   <option key={stateCode} value={stateCode}>
